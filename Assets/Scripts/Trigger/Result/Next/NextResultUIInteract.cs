@@ -8,10 +8,10 @@ public class NextResultUIInteract : SimpleResult
     UIInteract uiInteract = null;
     private void Start()
     {
-        Initialize();
+        InitializeNext();
     }
 
-    void Initialize()
+    void InitializeNext()
     {
         //TODO Trigger List
         resultType = ResultType.Next;
@@ -25,20 +25,24 @@ public class NextResultUIInteract : SimpleResult
             return;
         nextTrigger.gameObject.AddComponent<SimpleConditionInput>();
     }
-    protected override bool FuncCallResult(bool satisfied)
+    protected override bool FuncThisResult(bool satisfied)
     {
         if (satisfied)
-        {
             UIManager.Instance.TryAddUIInteract(uiInteract);
-            return nextTrigger.CheckCondition();
-        }
-        UIManager.Instance.TryRemoveUIInteract(uiInteract);
-        return false;
-
+        else
+            UIManager.Instance.TryRemoveUIInteract(uiInteract);
+        return true;
+    }
+    protected override bool FuncNextResult(bool satisfied)
+    {
+        if (!satisfied)
+            return false;
+        return nextTrigger.CheckCondition();
     }
 
     private void OnValidate()
-    {//TODO Trigger List
+    {
+        //TODO Trigger List
         if (nextTrigger != null)
         {
             nextTrigger.isNexted = true;

@@ -15,20 +15,23 @@ public class TypeWriter : Singleton<TypeWriter>
     {
         
     }
-
+    Action m_callback;
+    Action m_callback_added;
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            TrySkipType(
-                delegate () 
-                {
-                    transform.parent.GetComponent<Fadable>().StartFade(false, delegate (bool a) { PlayerStateController.Instance.SetState(PlayerStateController.STATE.NULL); });
-                }) ;
+            m_callback = delegate ()
+            {
+                transform.parent.GetComponent<Fadable>().StartFade(false, delegate () { PlayerStateController.Instance.SetState(PlayerStateController.STATE.NULL); });
+                m_callback_added?.Invoke();
+            };
+            TrySkipType(m_callback);
         }
     }
-    public void StartType(string[] fTargetStrings)
+    public void StartType(string[] fTargetStrings, Action added_callback = null)
     {
+        m_callback_added = added_callback;
         targetStrings = fTargetStrings;
         curLine = 0;
         if (targetStrings != null && targetStrings.Length != 0)

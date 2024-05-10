@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 
 public class SimpleResultTypeText : SimpleResult
@@ -16,7 +17,12 @@ public class SimpleResultTypeText : SimpleResult
     {
         if (!satisfied)
             return false;
-        panel_Text.StartFade(true, delegate (bool a) {text.StartType(content); PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText); });
+        Ended = false;
+        panel_Text.StartFade(true, delegate ()
+        {
+            text.StartType(content, delegate () { Ended = true; });
+            PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText);
+        });
         return true;
     }
 }

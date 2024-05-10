@@ -13,7 +13,7 @@ public class Fadable : MonoBehaviour
     [HelpBox("第0个子物体是背景、第1个子物体是内容", HelpBoxType.Warning/*enum selection*/, 0/*shown order*/)]
     public float inDuration = 0.3f;
     public float outDuration = 3f;
-    public void StartFade(bool isIn, Action<bool> callback = null)
+    public void StartFade(bool isIn, Action callback = null)
     {
         StopFade();
         StartCoroutine(Fade(isIn, callback));
@@ -23,7 +23,7 @@ public class Fadable : MonoBehaviour
         StopAllCoroutines();
         //StopCoroutine(nameof(Fade));
     }
-    IEnumerator Fade(bool isIn,Action<bool> callback = null)
+    IEnumerator Fade(bool isIn, Action callback = null)
     {
         if (!isIn)
             panelContent.SetActive(false);
@@ -41,7 +41,7 @@ public class Fadable : MonoBehaviour
         if (isIn)
             panelContent.SetActive(true);
         if(callback != null)
-            callback(isIn);
+            callback();
         yield break;
     }
 }

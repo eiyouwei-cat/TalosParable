@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 
 public class UIManager : Singleton<UIManager>
 {
@@ -16,30 +12,7 @@ public class UIManager : Singleton<UIManager>
     {
         RefreshUIInteract();
     }
-    //void Update()
-    //{
-    //    CheckUIInteract();
-    //}
     #region UI Interact
-    //public bool CheckUIInteract()
-    //{
-    //    //if (!panel_UIInteract.activeSelf)
-    //    //    return false;
-        
-    //    foreach (var uiInteract in uiInteracts)
-    //    {
-    //        if (Input.GetKeyDown(uiInteract.availableKeyCode))
-    //        {
-    //            foreach(var func in uiInteract.func)
-    //            {
-    //                func.Invoke(true);
-    //            }
-    //            //RefreshUIInteract();
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
     public void TryAddUIInteract(UIInteract addU)
     {
         if (uiInteracts.Contains(addU))

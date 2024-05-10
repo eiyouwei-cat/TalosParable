@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -20,14 +21,17 @@ public class SimpleResult : MonoBehaviour
     [HelpBox("Next",HelpBoxType.Info)]
     [SerializeField]
     protected Trigger nextTrigger;
+    private bool ended = false;
+    public bool Ended { get => ended; set => ended = value; }
     protected virtual bool FuncThisResult(bool satisfied)
     {
         throw new System.NotImplementedException();
     }
-    public virtual bool FuncNextResult(bool satisfied)
+    protected virtual bool FuncNextResult(bool satisfied)
     {
         throw new System.NotImplementedException();
     }
+    
     #endregion
     #region Delay
     [HelpBox("Delay", HelpBoxType.Info)]
@@ -35,7 +39,10 @@ public class SimpleResult : MonoBehaviour
     float delayTime;
     [SerializeField]
     SimpleResult delayResult;
-    protected virtual bool FuncResult(bool satisfied)
+
+    
+
+    protected virtual bool FuncSimpleResult(bool satisfied)
     {
         throw new System.NotImplementedException();
     }
@@ -56,12 +63,17 @@ public class SimpleResult : MonoBehaviour
         switch (resultType)
         {
             case ResultType.Delay:
-                satisfied = FuncResult(satisfied) && satisfied;
+                satisfied = FuncSimpleResult(satisfied);
                 if (satisfied)
                     StartCoroutine(Delay());
                 return satisfied;
-            default:
-                return false;
+            case ResultType.Next:
+                satisfied = FuncThisResult(satisfied) && satisfied;
+                return FuncNextResult(satisfied);
+            case ResultType.Simple:
+                satisfied = FuncSimpleResult(satisfied);
+                return satisfied;
+            default:return false;
         }
     }
 

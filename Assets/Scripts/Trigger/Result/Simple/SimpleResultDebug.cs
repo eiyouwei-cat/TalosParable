@@ -6,7 +6,7 @@ public class SimpleResultDebug : SimpleResult
 {
     [SerializeField]
     string debugInfo;
-    protected override bool FuncResult(bool satisfied)
+    protected override bool FuncSimpleResult(bool satisfied)
     {
         if(!satisfied)
             return false;
