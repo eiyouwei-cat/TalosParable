@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextResultUIInteract : NextResult
+public class NextResultUIInteract : SimpleResult
 {
     UIInteract uiInteract = null;
     private void Start()
@@ -14,7 +14,8 @@ public class NextResultUIInteract : NextResult
     void Initialize()
     {
         //TODO Trigger List
-        uiInteract ??= new UIInteract(GetComponent<SimpleConditionUIInteract>().availableKeyCode, new List<Action<bool>> { delegate (bool b) { nextTrigger.CheckCondition(); } });
+        resultType = ResultType.Next;
+        uiInteract ??= new UIInteract(GetComponent<SimpleConditionUIInteract>().availableKeyCode, new List<Action> { delegate () { nextTrigger.CheckCondition(); } });
         if (nextTrigger == null)
         {
             Debug.LogError(name + " NULL nextTrigger");
@@ -24,7 +25,7 @@ public class NextResultUIInteract : NextResult
             return;
         nextTrigger.gameObject.AddComponent<SimpleConditionInput>();
     }
-    protected override bool FuncResult(bool satisfied)
+    protected override bool FuncCallResult(bool satisfied)
     {
         if (satisfied)
         {

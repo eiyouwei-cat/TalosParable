@@ -239,11 +239,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 69814034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0fde269db91f34ba39eda75495ba51, type: 3}
+  m_Script: {fileID: 11500000, guid: 81465ef5359fb8f4cae0f91e6bbc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultType: 2
+  nextTrigger: {fileID: 0}
   delayTime: 2
-  nextResult: {fileID: 1422750795}
+  delayResult: {fileID: 1422750795}
   debugInfo: 222
 --- !u!1 &84391122
 GameObject:
@@ -504,6 +506,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534625b218ea670489dd120144fd3309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultType: 0
+  nextTrigger: {fileID: 0}
+  delayTime: 0
+  delayResult: {fileID: 0}
   panel_Text: {fileID: 1702422268}
   text: {fileID: 98540073}
   content:
@@ -1374,7 +1380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0fcbd912ec9cb45b1860755d368a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultType: 1
   nextTrigger: {fileID: 180308014}
+  delayTime: 0
+  delayResult: {fileID: 0}
 --- !u!114 &596527709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2350,6 +2359,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916894040}
   m_CullTransparentMesh: 1
+--- !u!1 &922823701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922823702}
+  - component: {fileID: 922823703}
+  m_Layer: 0
+  m_Name: Delayed (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &922823702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922823701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088434016}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &922823703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922823701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534625b218ea670489dd120144fd3309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultType: 2
+  nextTrigger: {fileID: 0}
+  delayTime: 0
+  delayResult: {fileID: 0}
+  panel_Text: {fileID: 1702422268}
+  text: {fileID: 98540073}
+  content:
+  - I prayed for a storm to set you back
+  - Whose fault is it that our seeds have spread too far,leaving us nowhere to bloom?
+  - yet the dandelions grew
 --- !u!1 &927921967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,11 +3532,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422750793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0fde269db91f34ba39eda75495ba51, type: 3}
+  m_Script: {fileID: 11500000, guid: 81465ef5359fb8f4cae0f91e6bbc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0
-  nextResult: {fileID: 0}
+  resultType: 2
+  nextTrigger: {fileID: 0}
+  delayTime: 1
+  delayResult: {fileID: 922823703}
   debugInfo: 333
 --- !u!1 &1438950408
 GameObject:
@@ -3536,6 +3600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81465ef5359fb8f4cae0f91e6bbc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultType: 0
+  nextTrigger: {fileID: 0}
+  delayTime: 0
+  delayResult: {fileID: 0}
   debugInfo: 222
 --- !u!114 &1438950412
 MonoBehaviour:
@@ -3581,7 +3649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0fcbd912ec9cb45b1860755d368a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultType: 0
   nextTrigger: {fileID: 0}
+  delayTime: 0
+  delayResult: {fileID: 0}
 --- !u!1 &1474219590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4975,7 +5046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2088434016
 Transform:
   m_ObjectHideFlags: 0
@@ -4989,6 +5060,7 @@ Transform:
   m_Children:
   - {fileID: 69814035}
   - {fileID: 1422750794}
+  - {fileID: 922823702}
   m_Father: {fileID: 927921968}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5001,12 +5073,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2088434015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0fde269db91f34ba39eda75495ba51, type: 3}
+  m_Script: {fileID: 11500000, guid: 81465ef5359fb8f4cae0f91e6bbc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultType: 2
+  nextTrigger: {fileID: 0}
   delayTime: 1
-  nextResult: {fileID: 69814036}
-  debugInfo: 111
+  delayResult: {fileID: 69814036}
+  debugInfo: 11
 --- !u!114 &2088434020
 MonoBehaviour:
   m_ObjectHideFlags: 0

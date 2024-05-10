@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class SimpleResultTypeText : SimpleResult
 {
+    [HelpBox("Type",HelpBoxType.Info)]
     [SerializeField]
     Fadable panel_Text;
     [SerializeField]
     TypeWriter text;
     [SerializeField]
     string[] content;
-    protected override bool FuncResult(bool satisfied)
+    protected override bool FuncCallResult(bool satisfied)
     {
         if (!satisfied)
             return false;
