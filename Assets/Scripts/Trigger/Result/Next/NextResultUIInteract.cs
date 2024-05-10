@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class NextResultUIInteract : SimpleResult
 {
+    [SerializeField]
+    KeyCode availableKeyCode;
     UIInteract uiInteract = null;
     private void Start()
     {
@@ -15,7 +17,7 @@ public class NextResultUIInteract : SimpleResult
     {
         //TODO Trigger List
         resultType = ResultType.Next;
-        uiInteract ??= new UIInteract(GetComponent<SimpleConditionUIInteract>().availableKeyCode, new List<Action> { delegate () { nextTrigger.CheckCondition(); } });
+        uiInteract ??= new UIInteract(availableKeyCode, new List<Action> { delegate () { nextTrigger.CheckCondition(); } });
         if (nextTrigger == null)
         {
             Debug.LogError(name + " NULL nextTrigger");
@@ -46,7 +48,7 @@ public class NextResultUIInteract : SimpleResult
         if (nextTrigger != null)
         {
             nextTrigger.isNexted = true;
-            nextTrigger.GetComponent<SimpleConditionInput>().KeyCode = GetComponent<SimpleConditionUIInteract>().availableKeyCode;
+            nextTrigger.GetComponent<SimpleConditionInput>().KeyCode = availableKeyCode;
         }
     }
 }

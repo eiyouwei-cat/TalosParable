@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(NextResultUIInteract))]
 public class SimpleConditionUIInteract : SimpleCondition
 {
-    public KeyCode availableKeyCode;
     //[SerializeField]
     bool visible = false;
     private void OnBecameVisible()

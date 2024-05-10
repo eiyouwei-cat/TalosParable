@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class SimpleConditionBool : SimpleCondition
 {
     [SerializeField]
-    SimpleResultTypeText simpleResultTypeText;
-
+    SimpleResult simpleResult;
     protected override bool FuncCondition()
     {
-        return simpleResultTypeText.Ended;
+        GetComponent<SimpleResult>().EndedCallback = delegate () { simpleResult.Ended = false; };
+        return simpleResult.Ended;
     }
 }

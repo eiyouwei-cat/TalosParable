@@ -17,19 +17,25 @@ public class SimpleResult : MonoBehaviour
     };
     [SerializeField]
     protected ResultType resultType = ResultType.Simple;
+    [SerializeField]
+    bool ended = false;
+    public bool Ended { get => ended; set => ended = value; }
+    Action endedCallback;
+    public Action EndedCallback { get => endedCallback; set => endedCallback = value; }
+
+    
     #region Next
     [HelpBox("Next",HelpBoxType.Info)]
     [SerializeField]
     protected Trigger nextTrigger;
-    private bool ended = false;
-    public bool Ended { get => ended; set => ended = value; }
+    
     protected virtual bool FuncThisResult(bool satisfied)
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
     protected virtual bool FuncNextResult(bool satisfied)
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
     
     #endregion
@@ -44,7 +50,7 @@ public class SimpleResult : MonoBehaviour
 
     protected virtual bool FuncSimpleResult(bool satisfied)
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
     IEnumerator Delay()
     {
@@ -64,6 +70,7 @@ public class SimpleResult : MonoBehaviour
         {
             case ResultType.Delay:
                 satisfied = FuncSimpleResult(satisfied);
+                EndedCallback?.Invoke();
                 if (satisfied)
                     StartCoroutine(Delay());
                 return satisfied;
@@ -72,6 +79,7 @@ public class SimpleResult : MonoBehaviour
                 return FuncNextResult(satisfied);
             case ResultType.Simple:
                 satisfied = FuncSimpleResult(satisfied);
+                EndedCallback?.Invoke();
                 return satisfied;
             default:return false;
         }
