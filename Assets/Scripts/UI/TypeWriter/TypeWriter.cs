@@ -23,8 +23,7 @@ public class TypeWriter : Singleton<TypeWriter>
             TrySkipType(
                 delegate () 
                 {
-                    transform.parent.GetComponent<Fadable>().StartFade(false);
-                    PlayerStateController.Instance.SetState(PlayerStateController.STATE.NULL);
+                    transform.parent.GetComponent<Fadable>().StartFade(false, delegate (bool a) { PlayerStateController.Instance.SetState(PlayerStateController.STATE.NULL); });
                 }) ;
         }
     }
@@ -52,8 +51,7 @@ public class TypeWriter : Singleton<TypeWriter>
         curLine++;
         if(curLine == targetStrings.Length)
         {
-            if (callback != null)
-                callback();
+            callback?.Invoke();
             return;
         }
         StartCoroutine(TypeLine(targetStrings[curLine]));

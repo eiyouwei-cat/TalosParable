@@ -1,24 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Trigger : MonoBehaviour
 {
     public bool isNexted = false;
 
     [SerializeField]
-    protected float conditionCD = 1f;
-
-
-    [SerializeField]
     protected bool usedOnce = false;
     [SerializeField]
     protected bool used = false;
-    //[SerializeField]
-    //protected bool isUsing = false;
 
     [SerializeField]
     SimpleCondition[] triggerConditions = null;

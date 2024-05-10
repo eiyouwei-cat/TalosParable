@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SimpleResultSetPlayerState))]
+
 public class SimpleResultTypeText : SimpleResult
 {
     [SerializeField]
@@ -15,22 +15,7 @@ public class SimpleResultTypeText : SimpleResult
     {
         if (!satisfied)
             return false;
-        panel_Text.StartFade(true, delegate (bool a) {/* Debug.Log(a);*/text.StartType(content); });
+        panel_Text.StartFade(true, delegate (bool a) {text.StartType(content); PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText); });
         return true;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            panel_Text.StartFade(true);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            panel_Text.StartFade(false);
     }
 }

@@ -5,15 +5,6 @@ using UnityEngine;
 
 public class SimpleResultUIInteract : SimpleResult
 {
-
-    
-
-    List<Action<bool>> resultActions = new List<Action<bool>>();
-    //[SerializeField]
-    //List<GameObject> resultsGO = new List<GameObject>();
-    //[SerializeField]
-    //List<SimpleResult> simpleResults = new List<SimpleResult>();
-    
     UIInteract uiInteract = null;
 
     [SerializeField]
@@ -41,7 +32,7 @@ public class SimpleResultUIInteract : SimpleResult
         if (satisfied)
         {
             UIManager.Instance.TryAddUIInteract(uiInteract);
-            return nextTrigger.CheckCondition(); //= delegate () {return UIManager.Instance.CheckUIInteract(); };
+            return nextTrigger.CheckCondition();
         }
         UIManager.Instance.TryRemoveUIInteract(uiInteract);
         return false;
