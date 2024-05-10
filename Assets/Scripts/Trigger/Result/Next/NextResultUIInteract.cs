@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleResultUIInteract : SimpleResult
+public class NextResultUIInteract : NextResult
 {
     UIInteract uiInteract = null;
-
-    [SerializeField]
-    protected Trigger nextTrigger;
     private void Start()
     {
         Initialize();
@@ -20,7 +17,7 @@ public class SimpleResultUIInteract : SimpleResult
         uiInteract ??= new UIInteract(GetComponent<SimpleConditionUIInteract>().availableKeyCode, new List<Action<bool>> { delegate (bool b) { nextTrigger.CheckCondition(); } });
         if (nextTrigger == null)
         {
-            Debug.LogError(name + "NULL nextTrigger");
+            Debug.LogError(name + " NULL nextTrigger");
             return;
         }
         if (nextTrigger.gameObject.GetComponent<SimpleConditionInput>() != null)
@@ -40,13 +37,11 @@ public class SimpleResultUIInteract : SimpleResult
     }
 
     private void OnValidate()
-    {
-        if(nextTrigger != null)
+    {//TODO Trigger List
+        if (nextTrigger != null)
         {
             nextTrigger.isNexted = true;
             nextTrigger.GetComponent<SimpleConditionInput>().KeyCode = GetComponent<SimpleConditionUIInteract>().availableKeyCode;
         }
-            //TODO Trigger List
-            
     }
 }

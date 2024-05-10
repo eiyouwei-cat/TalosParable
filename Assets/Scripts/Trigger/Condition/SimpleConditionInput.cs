@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimpleConditionInput : SimpleCondition
 {
     [SerializeField]
-    [HelpBox("Forced by Last Trigger")]
+    [HelpBox("Forced By Last Trigger",HelpBoxType.Warning)]
     KeyCode keyCode = KeyCode.None;
     enum InputType
     {
@@ -19,7 +19,7 @@ public class SimpleConditionInput : SimpleCondition
         get
         {
             if (keyCode == KeyCode.None)
-                Debug.LogError(name + "NULL keyCode");
+                Debug.LogError(name + " NULL keyCode");
             return keyCode;
         }
         set => keyCode = value;

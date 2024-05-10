@@ -8,6 +8,10 @@ public abstract class SimpleCondition : MonoBehaviour
     public Condition condition;
     private void Awake()
     {
+        Initialize();
+    }
+    protected virtual void Initialize()
+    {
         condition += FuncCondition;
     }
     protected abstract bool FuncCondition();
