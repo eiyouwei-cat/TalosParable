@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Trigger : MonoBehaviour
 {
+    public bool isNexted = false;
+
     [SerializeField]
     protected float conditionCD = 1f;
 
@@ -13,65 +17,65 @@ public class Trigger : MonoBehaviour
     protected bool usedOnce = false;
     [SerializeField]
     protected bool used = false;
-    [SerializeField]
-    protected bool isUsing = false;
+    //[SerializeField]
+    //protected bool isUsing = false;
 
     [SerializeField]
-    TriggerCondition[] triggerConditions = null;
+    SimpleCondition[] triggerConditions = null;
     [SerializeField]
-    TriggerResult[] triggerResults = null;
+    SimpleResult[] triggerResults = null;
+
+    public SimpleResult[] TriggerResults { get => triggerResults; set => triggerResults = value; }
 
     private void Awake()
     {
         Initialize();
         
     }
-    private void Start()
-    {
-        StartCoroutine(nameof(CheckCondition));
-    }
     void Initialize()
     {
-        triggerConditions = GetComponents<TriggerCondition>();
+        triggerConditions = GetComponents<SimpleCondition>();
         if (triggerConditions.Length == 0)
             Debug.LogError("NULL Trigger Condition!");
-        triggerResults = GetComponents<TriggerResult>();
-        if(triggerResults.Length == 0)
+        TriggerResults = GetComponents<SimpleResult>();
+        if(TriggerResults.Length == 0)
             Debug.LogError("NULL Trigger Result!");
     }
 
-    IEnumerator CheckCondition()
+    void Update()
     {
-        if (used || isUsing)
-            yield break;
-        while(true)
+        if (isNexted)
+            return;
+        CheckCondition();
+    }
+    public bool CheckCondition()
+    {
+        if (used)
+            return false;
+        bool satisfied = true;
+        foreach (SimpleCondition simpleCondition in triggerConditions)
         {
-            bool condition = true;
-            for (int i = 0; i < triggerConditions.Length; i++)
+            if (!simpleCondition.condition.Invoke())
             {
-                if (!triggerConditions[i].Call())
-                {
-                    condition = false;
-                    break;
-                }
+                satisfied = false;
+                break;
             }
-            if(!condition)
-            {
-                yield return new WaitForSeconds(conditionCD);
-                continue;
-            }
-            for (int i = 0; i < triggerResults.Length; i++)
-            {
-                triggerResults[i].Call();
-            }
-                
-            if (usedOnce)
-            {
-                used = true;
-                yield break;
-            }
-            yield return new WaitForSeconds(conditionCD);
         }
+        
+        foreach (SimpleResult simpleResult in TriggerResults)
+        {
+            satisfied = simpleResult.result.Invoke(satisfied) && satisfied;
+        }
+        if (satisfied && usedOnce)
+        {
+            used = true;
+            foreach (SimpleResult simpleResult in TriggerResults)
+            {
+                simpleResult.result.Invoke(false);
+            }
+        }
+           
+        return used;
     }
     
     

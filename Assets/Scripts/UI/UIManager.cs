@@ -16,31 +16,30 @@ public class UIManager : Singleton<UIManager>
     {
         RefreshUIInteract();
     }
-    void Update()
-    {
-        CheckUIInteract();
-    }
+    //void Update()
+    //{
+    //    CheckUIInteract();
+    //}
     #region UI Interact
-    void CheckUIInteract()
-    {
-        if (!panel_UIInteract.activeSelf)
-            return;
-        if (PlayerStateController.Instance.IsBusy())
-            return;
-        for(int i = 0; i < uiInteracts.Count; i++)
-        {
-            if (Input.GetKeyDown(uiInteracts[i].availableKeyCode))
-            {
-                for(int j = 0; j < uiInteracts[i].func.Length; j++)
-                    uiInteracts[i].func[j].Invoke();
-                //TODO: remove or not ??
-                RefreshUIInteract();
-                //panel_UIInteract.SetActive(false);
-                return;
-            }
-        }
-
-    }
+    //public bool CheckUIInteract()
+    //{
+    //    //if (!panel_UIInteract.activeSelf)
+    //    //    return false;
+        
+    //    foreach (var uiInteract in uiInteracts)
+    //    {
+    //        if (Input.GetKeyDown(uiInteract.availableKeyCode))
+    //        {
+    //            foreach(var func in uiInteract.func)
+    //            {
+    //                func.Invoke(true);
+    //            }
+    //            //RefreshUIInteract();
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
     public void TryAddUIInteract(UIInteract addU)
     {
         if (uiInteracts.Contains(addU))

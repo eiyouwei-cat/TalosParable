@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TriggerCondition : MonoBehaviour
+public abstract class SimpleCondition : MonoBehaviour
 {
     public delegate bool Condition();
     public Condition condition;
@@ -12,8 +12,4 @@ public abstract class TriggerCondition : MonoBehaviour
     }
     protected abstract bool FuncCondition();
 
-    public bool Call()
-    {
-        return condition.Invoke();
-    }
 }

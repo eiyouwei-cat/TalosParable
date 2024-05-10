@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerResultSetPlayerState : TriggerResult
+public class SimpleResultSetPlayerState : SimpleResult
 {
     [SerializeField]
     PlayerStateController.STATE newState;
 
-    protected override void FuncResult()
+    protected override bool FuncResult(bool satisfied)
     {
+        if (!satisfied)
+            return false;
         PlayerStateController.Instance.SetState(newState);
+        return true;
     }
 
 }

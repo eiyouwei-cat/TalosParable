@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class TriggerConditionNear : TriggerCondition
+public class SimpleConditionNear : SimpleCondition
 {
     [SerializeField]
     Transform self;

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerResultDebug : TriggerResult
+public class SimpleResultDebug : SimpleResult
 {
     [SerializeField]
     string debugInfo;
-    protected override void FuncResult()
+    protected override bool FuncResult(bool satisfied)
     {
+        if(!satisfied)
+            return false;
         Debug.Log(name + " "+ debugInfo + " (Triggered)");
+        return true;
     }
 }

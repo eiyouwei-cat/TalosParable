@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 public class UIInteract
 {
     public KeyCode availableKeyCode;
-    public Action[] func;
+    public List<Action<bool>> func;
 
-    public UIInteract(KeyCode availableKeyCode, Action[] func)
+    public UIInteract(KeyCode availableKeyCode, List<Action<bool>> func)
     {
         this.availableKeyCode = availableKeyCode;
         this.func = func;

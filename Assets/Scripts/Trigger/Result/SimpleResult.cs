@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public abstract class TriggerResult : MonoBehaviour
+public abstract class SimpleResult : MonoBehaviour
 {
-    public delegate void Result();
+    public delegate bool Result(bool satisfied);
     public Result result;
+
     private void Awake()
     {
         result += FuncResult;
     }
-    protected abstract void FuncResult();
+    protected abstract bool FuncResult(bool satisfied);
 
-    public void Call()
-    {
-        result.Invoke();
-    }
+    
+
 }

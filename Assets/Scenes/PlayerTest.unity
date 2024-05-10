@@ -244,6 +244,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   global: 1
   typeCD: 0.06
+--- !u!1 &180308012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 180308013}
+  - component: {fileID: 180308014}
+  - component: {fileID: 180308017}
+  - component: {fileID: 180308016}
+  - component: {fileID: 180308015}
+  m_Layer: 0
+  m_Name: Trigger_UIInteract
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &180308013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180308012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 596527704}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180308014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180308012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be902e0f14f5194b9639bbf8883d916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNexted: 1
+  conditionCD: 1
+  usedOnce: 1
+  used: 0
+  triggerConditions: []
+  triggerResults: []
+--- !u!114 &180308015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180308012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534625b218ea670489dd120144fd3309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel_Text: {fileID: 1702422268}
+  text: {fileID: 98540073}
+  content:
+  - secretly , secretly ...
+  - whose tears salted the waters,
+  - keeping U up afloat from the ocean bed ?
+--- !u!114 &180308016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180308012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c58949329d0ed4fa7286183a3051b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newState: 1
+--- !u!114 &180308017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180308012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62019c9965f814046baff41ec784dc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCode: 282
+  inputType: 0
 --- !u!1 &331157830
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,10 +603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be902e0f14f5194b9639bbf8883d916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNexted: 0
   conditionCD: 2.4
   usedOnce: 0
   used: 0
-  isUsing: 0
   triggerConditions: []
   triggerResults: []
 --- !u!1 &596527703
@@ -524,10 +621,10 @@ GameObject:
   - component: {fileID: 596527707}
   - component: {fileID: 596527706}
   - component: {fileID: 596527705}
-  - component: {fileID: 596527710}
-  - component: {fileID: 596527708}
-  - component: {fileID: 596527709}
+  - component: {fileID: 596527712}
   - component: {fileID: 596527711}
+  - component: {fileID: 596527709}
+  - component: {fileID: 596527708}
   m_Layer: 0
   m_Name: Capsure
   m_TagString: Untagged
@@ -545,7 +642,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.36, y: 0.13, z: 2.09}
-  m_Children: []
+  m_Children:
+  - {fileID: 180308013}
   m_Father: {fileID: 927921968}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -620,11 +718,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 596527703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd84a3d8164f3544bf51050e434d09b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0fcbd912ec9cb45b1860755d368a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableKeyCode: 102
-  visible: 0
+  nextTrigger: {fileID: 180308014}
 --- !u!114 &596527709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,16 +731,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 596527703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 534625b218ea670489dd120144fd3309, type: 3}
+  m_Script: {fileID: 11500000, guid: fdd84a3d8164f3544bf51050e434d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel_Text: {fileID: 1702422268}
-  text: {fileID: 98540073}
-  content:
-  - secretly , secretly ...
-  - whose tears salted the waters,
-  - keeping U up afloat from the ocean bed ?
---- !u!114 &596527710
+  availableKeyCode: 282
+  visible: 0
+--- !u!114 &596527711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -658,7 +751,7 @@ MonoBehaviour:
   self: {fileID: 94442527}
   target: {fileID: 596527704}
   nearDistance: 6.27
---- !u!114 &596527711
+--- !u!114 &596527712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -667,10 +760,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 596527703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c58949329d0ed4fa7286183a3051b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3be902e0f14f5194b9639bbf8883d916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newState: 1
+  isNexted: 0
+  conditionCD: 1
+  usedOnce: 1
+  used: 0
+  triggerConditions: []
+  triggerResults: []
 --- !u!4 &700051398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8338988566280778637, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -1262,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.676
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1270,7 +1368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -0.43000007
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1505,7 +1603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.676
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1513,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -0.43000007
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1566,6 +1664,7 @@ GameObject:
   - component: {fileID: 1438950412}
   - component: {fileID: 1438950410}
   - component: {fileID: 1438950411}
+  - component: {fileID: 1438950414}
   m_Layer: 0
   m_Name: Trigger Capsure (1)
   m_TagString: Untagged
@@ -1599,7 +1698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd84a3d8164f3544bf51050e434d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableKeyCode: 102
+  availableKeyCode: 0
   visible: 0
 --- !u!114 &1438950411
 MonoBehaviour:
@@ -1641,12 +1740,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be902e0f14f5194b9639bbf8883d916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNexted: 0
   conditionCD: 2.4
   usedOnce: 0
   used: 0
-  isUsing: 0
   triggerConditions: []
   triggerResults: []
+--- !u!114 &1438950414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438950408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0fcbd912ec9cb45b1860755d368a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextTrigger: {fileID: 0}
 --- !u!1 &1555761188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,7 +2081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.476
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1977,7 +2089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2021,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885216827943657505, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: pushLayers.m_Bits
-      value: 4294967295
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -2181,7 +2293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: F
+  m_Text: F1
 --- !u!222 &1822909929
 CanvasRenderer:
   m_ObjectHideFlags: 0
