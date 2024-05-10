@@ -13,7 +13,7 @@ public class SimpleResultTypeText : SimpleResult
     TypeWriter text;
     [SerializeField]
     string[] content;
-    protected override bool FuncCallResult(bool satisfied)
+    protected override bool FuncSimpleResult(bool satisfied)
     {
         if (!satisfied)
             return false;
