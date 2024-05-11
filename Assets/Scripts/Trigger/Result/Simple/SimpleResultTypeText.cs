@@ -21,7 +21,7 @@ public class SimpleResultTypeText : SimpleResult
         panel_Text.StartFade(true, delegate ()
         {
             text.StartType(content, delegate () { Ended = true; });
-            PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText);
+            //PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText);
         });
         return true;
     }

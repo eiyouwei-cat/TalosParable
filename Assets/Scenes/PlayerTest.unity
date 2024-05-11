@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 180308014}
   - component: {fileID: 180308017}
   - component: {fileID: 180308015}
+  - component: {fileID: 180308016}
   m_Layer: 0
   m_Name: Trigger_UIInteract
   m_TagString: Untagged
@@ -518,6 +519,24 @@ MonoBehaviour:
   - whose tears salted the waters,
   - keeping U up afloat from the ocean bed ?
   - secretly , secretly ...
+--- !u!114 &180308016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180308012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c58949329d0ed4fa7286183a3051b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultType: 0
+  ended: 0
+  nextTrigger: {fileID: 0}
+  delayTime: 0
+  delayResult: {fileID: 0}
+  newState: 1
 --- !u!114 &180308017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,7 +1324,7 @@ Transform:
   m_LocalScale: {x: 3.36, y: 0.13, z: 2.09}
   m_Children: []
   m_Father: {fileID: 1294365342}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &596527705
 BoxCollider:
@@ -3439,8 +3458,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1717640110}
   - {fileID: 596527704}
+  - {fileID: 1717640110}
   - {fileID: 180308013}
   - {fileID: 1977479396}
   - {fileID: 1326182483}
@@ -4273,7 +4292,7 @@ Transform:
   m_LocalScale: {x: 11.92, y: 11.92, z: 11.92}
   m_Children: []
   m_Father: {fileID: 1294365342}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1717640111
 SphereCollider:

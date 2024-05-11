@@ -8,15 +8,11 @@ public class NextResultUIInteract : SimpleResult
     [SerializeField]
     KeyCode availableKeyCode;
     UIInteract uiInteract = null;
-    private void Start()
-    {
-        InitializeNext();
-    }
+    
 
     void InitializeNext()
     {
         //TODO Trigger List
-        resultType = ResultType.Next;
         uiInteract ??= new UIInteract(availableKeyCode, new List<Action> { delegate () { nextTrigger.CheckCondition(); } });
         if (nextTrigger == null)
         {
@@ -47,7 +43,6 @@ public class NextResultUIInteract : SimpleResult
         //TODO Trigger List
         if (nextTrigger != null)
         {
-            nextTrigger.isNexted = true;
             nextTrigger.GetComponent<SimpleConditionInput>().KeyCode = availableKeyCode;
         }
     }
