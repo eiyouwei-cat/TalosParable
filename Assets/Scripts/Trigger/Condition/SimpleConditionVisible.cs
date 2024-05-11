@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 [RequireComponent(typeof(SimpleResultUIInteract))]
-public class SimpleConditionUIInteract : SimpleCondition
+public class SimpleConditionVisible : SimpleCondition
 {
     //[SerializeField]
     bool visible = false;

@@ -30,7 +30,10 @@ public class SimpleConditionNear : SimpleCondition
     {
         if (!gameObject.activeSelf)
             return;
+        nearSphere.transform.parent = null;
         nearSphere.transform.localScale = 2 * nearDistance * Vector3.one;
+        nearSphere.transform.parent = transform;
+        nearSphere.transform.localPosition = Vector3.zero;
         nearSphere.SetActive(visible);
     }
 }

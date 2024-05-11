@@ -8,23 +8,18 @@ public class SimpleResultUIInteract : SimpleResult
     [HelpBox("UIInteract", HelpBoxType.Info)]
     [SerializeField]
     KeyCode availableKeyCode;
-    UIInteract uiInteract = null;
+    UIInteractInfo uiInteract = null;
     [SerializeField]
     string interactInfo;
 
-    protected override void InitializeNext()
+    protected override void Initialize()
     {
-        base.InitializeNext();
+        base.Initialize();
         //TODO Trigger List
-        uiInteract ??= new UIInteract(availableKeyCode, interactInfo);
-        if (nextTrigger == null)
-        {
-            Debug.LogError(name + " NULL nextTrigger");
-            return;
-        }
-        if (nextTrigger.gameObject.GetComponent<SimpleConditionInput>() != null)
-            return;
-        nextTrigger.gameObject.AddComponent<SimpleConditionInput>();
+        uiInteract ??= new UIInteractInfo(availableKeyCode, interactInfo);
+        
+        if (nextTrigger.gameObject.GetComponent<SimpleConditionInput>() == null)
+            nextTrigger.gameObject.AddComponent<SimpleConditionInput>();
         nextTrigger.gameObject.GetComponent<SimpleConditionInput>().KeyCode = availableKeyCode;
     }
     protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)

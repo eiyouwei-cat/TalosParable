@@ -1,12 +1,18 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-public class UIInteract
+using UnityEngine.UI;
+
+
+public class UIInteract :MonoBehaviour
+{
+    public Text text_availableKeyCode;
+    public Text text_info;
+}
+public class UIInteractInfo
 {
     public KeyCode availableKeyCode;
     public string info;
 
-    public UIInteract(KeyCode availableKeyCode, string info)
+    public UIInteractInfo(KeyCode availableKeyCode, string info)
     {
         this.availableKeyCode = availableKeyCode;
         this.info = info;

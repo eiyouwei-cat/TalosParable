@@ -8,8 +8,6 @@ public class SimpleResultMove : SimpleResult
 {
     [HelpBox("Move",HelpBoxType.Info)]
     [SerializeField]
-    bool forceChangeToBusyState = true;
-    [SerializeField]
     Transform tryMove;
     [SerializeField]
     List<Transform> stations;
@@ -22,6 +20,37 @@ public class SimpleResultMove : SimpleResult
     [SerializeField]
     float speed;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (tryMove.GetComponent<Camera>())
+        {
+            if (resultType != ResultType.Delay)
+            {
+                Debug.LogError(name + "Not of delay type (move camera)!");
+            }
+
+
+            if(delayResult == null)
+            {
+                Debug.LogError(name + "NULL delay result");
+            }
+            else if(!delayResult.GetComponent<SimpleResultResetCamera>())
+            {
+                Debug.LogError(name + "delay not reset camera");
+            }
+        }
+
+        float totalTime = 0f;
+        foreach(var t in durations)
+            totalTime += t;
+        if(delayTime < totalTime + 0.5f)
+        {
+            Debug.LogError(name + "Delay time too short!");
+        }
+        
+    }
     protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
     {
         if (!satisfied)
@@ -34,8 +63,8 @@ public class SimpleResultMove : SimpleResult
     {
         if(!TryCalculateSpeed())
             yield break;
-        if (forceChangeToBusyState)
-            BusyMoveCollector.RefreshList(added: true, this);
+        //if (forceChangeToBusyState)
+        //    BusyCollector.RefreshList(added: true, this);
         if (tryMove.GetComponent<Camera>())
         {
             MyCamera.Instance.camera.enabled = false;
@@ -44,7 +73,7 @@ public class SimpleResultMove : SimpleResult
         {
             if (tarId >= stations.Count)
             {
-                BusyMoveCollector.RefreshList(added: false, this);
+                //BusyCollector.RefreshList(added: false, this);
                 yield break;
             }
             tryMove.Translate(speed * Vector3.Normalize(stations[tarId].position - tryMove.position), Space.World);

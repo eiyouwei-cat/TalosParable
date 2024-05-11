@@ -6,7 +6,7 @@ public abstract class SimpleCondition : MonoBehaviour
 {
     public delegate bool Condition();
     public Condition condition;
-    private void Awake()
+    protected virtual void Awake()
     {
         Initialize();
     }

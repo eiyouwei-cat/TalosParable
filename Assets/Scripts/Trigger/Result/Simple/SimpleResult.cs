@@ -17,18 +17,15 @@ public class SimpleResult : MonoBehaviour
     };
     [SerializeField]
     protected ResultType resultType = ResultType.Simple;
-    //Action endedCallback;
-    //public Action EndedCallback { get => endedCallback; set => endedCallback = value; }
-
-    
     #region Next
     [HelpBox("Next",HelpBoxType.Info)]
     [SerializeField]
     protected Trigger nextTrigger;
-    protected virtual void InitializeNext()
+    protected virtual void Initialize()
     {
         if (!gameObject.activeSelf)
             return;
+        //next
         if (resultType == ResultType.Next)
         {
             if (nextTrigger == null)
@@ -39,32 +36,46 @@ public class SimpleResult : MonoBehaviour
             nextTrigger.isNexted = true;
             nextTrigger.usedOnce = GetComponent<Trigger>().usedOnce;
         }
+        ////delay
+        if (resultType == ResultType.Delay)
+        {
+            forceChangeToBusyState = true;
+        }
+
+    }
+    private void OnValidate()
+    {
+        
     }
 
-
     #endregion
+
     #region Delay
     [HelpBox("Delay", HelpBoxType.Info)]
     [SerializeField]
-    float delayTime;
+    protected float delayTime;
     [SerializeField]
-    SimpleResult delayResult;
+    protected SimpleResult delayResult;
+    [SerializeField]
+    protected bool forceChangeToBusyState = false;
     protected virtual bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
     {
         throw new NotImplementedException();
     }
     IEnumerator Delay()
     {
+        BusyCollector.RefreshList(added: true, this);
         yield return new WaitForSeconds(delayTime);
+        BusyCollector.RefreshList(added: false, this);
         delayResult?.FuncCallResult(true);
         yield break;
     }
     #endregion
 
-    private void Awake()
+    protected virtual void Awake()
     {
         result += FuncCallResult;
-        InitializeNext();
+        Initialize();
     }
     protected virtual bool FuncCallResult(bool satisfied)
     {

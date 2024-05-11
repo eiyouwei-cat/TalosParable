@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BusyMoveCollector : MonoBehaviour
+public class BusyCollector : MonoBehaviour
 {
-    public static List<SimpleResultMove> busyMoves = new List<SimpleResultMove>();
+    public static List<SimpleResult> busyMoves = new List<SimpleResult>();
 
-    public static void RefreshList(bool added,SimpleResultMove srm)
+    public static void RefreshList(bool added,SimpleResult srm)
     {
         if(added)
             busyMoves.Add(srm);
