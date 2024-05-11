@@ -243,7 +243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 2
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 0.5
   delayResult: {fileID: 1422750795}
@@ -457,7 +456,6 @@ GameObject:
   - component: {fileID: 180308014}
   - component: {fileID: 180308017}
   - component: {fileID: 180308015}
-  - component: {fileID: 180308016}
   m_Layer: 0
   m_Name: Trigger_UIInteract
   m_TagString: Untagged
@@ -474,10 +472,12 @@ Transform:
   m_GameObject: {fileID: 180308012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1294365342}
-  m_RootOrder: 2
+  m_LocalScale: {x: 0.29761904, y: 7.6923075, z: 0.47846892}
+  m_Children:
+  - {fileID: 1977479396}
+  - {fileID: 1326182483}
+  m_Father: {fileID: 596527704}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &180308014
 MonoBehaviour:
@@ -508,9 +508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534625b218ea670489dd120144fd3309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultType: 0
-  ended: 0
-  nextTrigger: {fileID: 0}
+  resultType: 1
+  nextTrigger: {fileID: 1977479397}
   delayTime: 0
   delayResult: {fileID: 0}
   panel_Text: {fileID: 1702422268}
@@ -519,24 +518,6 @@ MonoBehaviour:
   - whose tears salted the waters,
   - keeping U up afloat from the ocean bed ?
   - secretly , secretly ...
---- !u!114 &180308016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180308012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c58949329d0ed4fa7286183a3051b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultType: 0
-  ended: 0
-  nextTrigger: {fileID: 0}
-  delayTime: 0
-  delayResult: {fileID: 0}
-  newState: 1
 --- !u!114 &180308017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,7 +1303,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.36, y: 0.13, z: 2.09}
-  m_Children: []
+  m_Children:
+  - {fileID: 1717640110}
+  - {fileID: 180308013}
   m_Father: {fileID: 1294365342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1401,11 +1384,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 1
-  ended: 0
   nextTrigger: {fileID: 180308014}
   delayTime: 0
   delayResult: {fileID: 0}
   availableKeyCode: 282
+  interactInfo: 
 --- !u!114 &596527709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,7 +1431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isNexted: 0
-  usedOnce: 1
+  usedOnce: 0
   used: 0
   triggerConditions: []
   triggerResults: []
@@ -2426,7 +2409,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 2
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 0
   delayResult: {fileID: 0}
@@ -3459,10 +3441,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 596527704}
-  - {fileID: 1717640110}
-  - {fileID: 180308013}
-  - {fileID: 1977479396}
-  - {fileID: 1326182483}
   m_Father: {fileID: 927921968}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3496,6 +3474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1326182483}
   - component: {fileID: 1326182484}
+  - component: {fileID: 1326182485}
   m_Layer: 0
   m_Name: Trigger_2 (1)
   m_TagString: Untagged
@@ -3514,8 +3493,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1294365342}
-  m_RootOrder: 4
+  m_Father: {fileID: 180308013}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1326182484
 MonoBehaviour:
@@ -3530,17 +3509,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 0
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 0.5
   delayResult: {fileID: 0}
+  forceChangeToBusyState: 1
   moved: {fileID: 94442527}
   stations:
   - {fileID: 927921968}
   durations:
   - 2
   tarId: 0
-  speed: {x: 0, y: 0, z: 0}
+  speed: 0
+--- !u!114 &1326182485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326182482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca76a1a1ede0e264aae72d9bf8529c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultType: 0
+  nextTrigger: {fileID: 0}
+  delayTime: 0
+  delayResult: {fileID: 0}
+  forceChangeToBusyState: 1
+  moved: {fileID: 0}
+  stations: []
+  durations: []
+  tarId: 0
+  speed: 0
 --- !u!1001 &1402827283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3602,7 +3603,7 @@ PrefabInstance:
       objectReference: {fileID: 700051398}
     - target: {fileID: 2070925441746177913, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
@@ -3650,7 +3651,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 2
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 1
   delayResult: {fileID: 922823703}
@@ -3715,7 +3715,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 0
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 0
   delayResult: {fileID: 0}
@@ -3767,11 +3766,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 0
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 0
   delayResult: {fileID: 0}
   availableKeyCode: 0
+  interactInfo: 
 --- !u!1 &1474219590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,12 +4286,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717640109}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 11.92, y: 11.92, z: 11.92}
   m_Children: []
-  m_Father: {fileID: 1294365342}
-  m_RootOrder: 1
+  m_Father: {fileID: 596527704}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1717640111
 SphereCollider:
@@ -4989,7 +4988,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1977479396}
   - component: {fileID: 1977479397}
-  - component: {fileID: 1977479398}
   - component: {fileID: 1977479399}
   m_Layer: 0
   m_Name: Trigger_2
@@ -5009,8 +5007,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1294365342}
-  m_RootOrder: 3
+  m_Father: {fileID: 180308013}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1977479397
 MonoBehaviour:
@@ -5024,24 +5022,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be902e0f14f5194b9639bbf8883d916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isNexted: 0
-  usedOnce: 1
+  isNexted: 1
+  usedOnce: 0
   used: 0
   triggerConditions: []
   triggerResults: []
---- !u!114 &1977479398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977479395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c91b8ee43cb89a46a8f30a92d252000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  simpleResult: {fileID: 180308015}
 --- !u!114 &1977479399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5055,7 +5040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 2
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 2
   delayResult: {fileID: 1326182484}
@@ -5372,7 +5356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultType: 2
-  ended: 0
   nextTrigger: {fileID: 0}
   delayTime: 1
   delayResult: {fileID: 69814036}
@@ -5390,7 +5373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isNexted: 0
-  usedOnce: 1
+  usedOnce: 0
   used: 0
   triggerConditions: []
   triggerResults: []

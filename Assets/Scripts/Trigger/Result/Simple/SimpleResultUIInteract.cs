@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextResultUIInteract : SimpleResult
+public class SimpleResultUIInteract : SimpleResult
 {
+    [HelpBox("UIInteract", HelpBoxType.Info)]
     [SerializeField]
     KeyCode availableKeyCode;
     UIInteract uiInteract = null;
-    
+    [SerializeField]
+    string interactInfo;
 
-    void InitializeNext()
+    protected override void InitializeNext()
     {
+        base.InitializeNext();
         //TODO Trigger List
-        uiInteract ??= new UIInteract(availableKeyCode, new List<Action> { delegate () { nextTrigger.CheckCondition(); } });
+        uiInteract ??= new UIInteract(availableKeyCode, interactInfo);
         if (nextTrigger == null)
         {
             Debug.LogError(name + " NULL nextTrigger");
@@ -22,28 +25,17 @@ public class NextResultUIInteract : SimpleResult
         if (nextTrigger.gameObject.GetComponent<SimpleConditionInput>() != null)
             return;
         nextTrigger.gameObject.AddComponent<SimpleConditionInput>();
+        nextTrigger.gameObject.GetComponent<SimpleConditionInput>().KeyCode = availableKeyCode;
     }
-    protected override bool FuncThisResult(bool satisfied)
+    protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
     {
         if (satisfied)
+        {
             UIManager.Instance.TryAddUIInteract(uiInteract);
+            nextCallback();
+        }
         else
             UIManager.Instance.TryRemoveUIInteract(uiInteract);
         return true;
-    }
-    protected override bool FuncNextResult(bool satisfied)
-    {
-        if (!satisfied)
-            return false;
-        return nextTrigger.CheckCondition();
-    }
-
-    private void OnValidate()
-    {
-        //TODO Trigger List
-        if (nextTrigger != null)
-        {
-            nextTrigger.GetComponent<SimpleConditionInput>().KeyCode = availableKeyCode;
-        }
     }
 }

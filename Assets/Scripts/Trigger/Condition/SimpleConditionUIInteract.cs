@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-[RequireComponent(typeof(NextResultUIInteract))]
+[RequireComponent(typeof(SimpleResultUIInteract))]
 public class SimpleConditionUIInteract : SimpleCondition
 {
     //[SerializeField]

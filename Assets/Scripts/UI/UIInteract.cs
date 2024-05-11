@@ -4,11 +4,11 @@ using UnityEngine;
 public class UIInteract
 {
     public KeyCode availableKeyCode;
-    public List<Action> func;
+    public string info;
 
-    public UIInteract(KeyCode availableKeyCode, List<Action> func)
+    public UIInteract(KeyCode availableKeyCode, string info)
     {
         this.availableKeyCode = availableKeyCode;
-        this.func = func;
+        this.info = info;
     }
 }

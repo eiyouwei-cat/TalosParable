@@ -9,6 +9,7 @@ public class PlayerStateController : Singleton<PlayerStateController>
     {
         NULL,
         renderingText,//演出中
+        forceMovingSth,//移动某物体
     }
     [SerializeField]
     ObservableValue<STATE> state;
@@ -55,6 +56,6 @@ public class PlayerStateController : Singleton<PlayerStateController>
     }
     public bool IsBusy()
     {
-        return state.Value == STATE.renderingText;
+        return state.Value == STATE.renderingText || state.Value == STATE.forceMovingSth;
     }
 }

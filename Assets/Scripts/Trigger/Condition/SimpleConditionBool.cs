@@ -4,13 +4,13 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SimpleConditionBool : SimpleCondition
+public class SimpleConditionBool : MonoBehaviour//: SimpleCondition
 {
-    [SerializeField]
-    SimpleResult simpleResult;
-    protected override bool FuncCondition()
-    {
-        GetComponent<SimpleResult>().EndedCallback = delegate () { simpleResult.Ended = false; };
-        return simpleResult.Ended;
-    }
+    //[SerializeField]
+    //SimpleResult simpleResult;
+    //protected override bool FuncCondition()
+    //{
+    //    GetComponent<SimpleResult>().EndedCallback = delegate () { simpleResult.Ended = false; };
+    //    return simpleResult.Ended;
+    //}
 }
