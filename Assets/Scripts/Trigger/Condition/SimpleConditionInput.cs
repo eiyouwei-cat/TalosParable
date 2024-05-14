@@ -29,7 +29,7 @@ public class SimpleConditionInput : SimpleCondition
         switch (inputType)
         {
             case InputType.KeyDown:
-                return Input.GetKey(KeyCode);
+                return Input.GetKeyDown(KeyCode);
             default:
                 return false;
         }
