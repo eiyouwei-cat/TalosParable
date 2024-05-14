@@ -32,7 +32,6 @@ public class Fadable : MonoBehaviour
         if (!isIn)
             panelContent.SetActive(false);
         panelBack.gameObject.SetActive(true);
-        6.
         float time,timer;
         time = timer = isIn ? inDuration : outDuration;
         while (timer > 0)
