@@ -45,7 +45,7 @@ public class SimpleResult : MonoBehaviour
     }
     private void OnValidate()
     {
-        
+        Initialize();
     }
 
     #endregion
@@ -75,7 +75,7 @@ public class SimpleResult : MonoBehaviour
     protected virtual void Awake()
     {
         result += FuncCallResult;
-        Initialize();
+        //Initialize();
     }
     protected virtual bool FuncCallResult(bool satisfied)
     {

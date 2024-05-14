@@ -12,7 +12,7 @@ public class SimpleResultDebug : SimpleResult
     {
         if(!satisfied)
             return false;
-        Debug.Log(name + " "+ debugInfo + " (Triggered)");
+        //Debug.Log(name + " "+ debugInfo + " (Triggered)");
         return true;
     }
 }
