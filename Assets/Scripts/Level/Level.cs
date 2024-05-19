@@ -4,23 +4,50 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [Label("范围球是否可见")]
-    bool visible = true;
+    //[Label("范围球是否可见")]
+    //bool visible = true;
 
     //UI文字
     //摄像头移动
     //玩家锁定
+    //[SerializeField]
+    //Trigger[] triggers;
+
+    //private void Awake()
+    //{
+    //    triggers = GetComponentsInChildren<Trigger>();
+
+    //}
+
+    //private void OnValidate()
+    //{
+
+    //}
+
+    //[SerializeField]
+    //List<StateNode> levelStates = new List<StateNode>();
+    //[SerializeField]
+    //ObservableValue<StateNode> curState;
+
     [SerializeField]
-    Trigger[] triggers;
-
-    private void Awake()
+    SimpleResult enterResult;
+    public void OnEnterLevel()
     {
-        triggers = GetComponentsInChildren<Trigger>();
-        
+        //if(curState == null)
+        //{
+        //curState = new ObservableValue<StateNode>(levelStates[0], OnCurStateChange);
+        //}
+
+        enterResult?.result.Invoke(true);
     }
 
-    private void OnValidate()
+    public void OnLeaveLevel()
     {
-        
+        //curState = null;
     }
+
+    //void OnCurStateChange(StateNode oldS,StateNode newS)
+    //{
+    //
+    //}
 }

@@ -66,8 +66,8 @@ public class SimpleResult : MonoBehaviour
     {
         BusyCollector.RefreshList(added: true, this);
         yield return new WaitForSeconds(delayTime);
-        BusyCollector.RefreshList(added: false, this);
         delayResult?.FuncCallResult(true);
+        BusyCollector.RefreshList(added: false, this);
         yield break;
     }
     #endregion

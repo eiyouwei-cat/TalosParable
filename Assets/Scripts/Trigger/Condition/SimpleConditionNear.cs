@@ -11,9 +11,9 @@ public class SimpleConditionNear : SimpleCondition
     [SerializeField]
     GameObject nearSphere;
     [SerializeField]
-    Transform self;
+    protected Transform self;
     [SerializeField]
-    Transform target;
+    protected Transform target;
     [SerializeField]
     float nearDistance;
 
@@ -26,14 +26,12 @@ public class SimpleConditionNear : SimpleCondition
         }
         return (self.position - target.position).magnitude <= nearDistance;
     }
-    private void OnValidate()
+    protected virtual void OnValidate()
     {
         if (!gameObject.activeSelf)
             return;
-        nearSphere.transform.parent = null;
+        nearSphere.transform.position = self.position;
         nearSphere.transform.localScale = 2 * nearDistance * Vector3.one;
-        nearSphere.transform.parent = transform;
-        nearSphere.transform.localPosition = Vector3.zero;
         nearSphere.SetActive(visible);
     }
 }

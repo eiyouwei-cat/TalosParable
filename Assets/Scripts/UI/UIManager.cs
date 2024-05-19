@@ -12,6 +12,10 @@ public class UIManager : Singleton<UIManager>
     GameObject prefab_UIInteract;
     private void Awake()
     {
+        //RefreshUIInteract();
+    }
+    public void Initialize()
+    {
         RefreshUIInteract();
     }
     #region UI Interact
@@ -49,3 +53,4 @@ public class UIManager : Singleton<UIManager>
                 Destroy(p.GetChild(i).gameObject);
     }
 }
+ 
