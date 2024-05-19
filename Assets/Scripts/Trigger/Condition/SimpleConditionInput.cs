@@ -5,10 +5,7 @@ using UnityEngine;
 public class SimpleConditionInput : SimpleCondition
 {
     [HelpBox("Input", HelpBoxType.Info)]
-    [HideInInspector]
-    public int aa;
     [SerializeField]
-    [HelpBox("Forced By Last Trigger",HelpBoxType.Warning)]
     KeyCode keyCode = KeyCode.None;
     enum InputType
     {
@@ -27,6 +24,11 @@ public class SimpleConditionInput : SimpleCondition
             return keyCode;
         }
         set => keyCode = value;
+    }
+    public void SetKeyDown(KeyCode f_keyCode)
+    {
+        keyCode = f_keyCode;
+        inputType = InputType.KeyDown;
     }
     protected override bool FuncCondition()
     {

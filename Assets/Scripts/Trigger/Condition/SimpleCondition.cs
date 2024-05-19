@@ -16,42 +16,55 @@ public abstract class SimpleCondition : MonoBehaviour
     [SerializeField]
     protected SimpleCondition nextSimpleCondition;
     [SerializeField]
-    SimpleResult simpleResult;
-
+    List<SimpleResult> simpleResults = new List<SimpleResult>();
+    public void SetSimpleResults(List<SimpleResult> simpleResults)
+    { this.simpleResults = simpleResults; }
 
     protected virtual void Awake()
     {
         Initialize();
     }
 
-    private void Update()
-    {
-        CallFuncCondtion();
-    }
+    
     protected virtual void Initialize()
     {
         condition += FuncCondition;
     }
     protected abstract bool FuncCondition();
-    protected bool CallFuncCondtion()
+    public bool CallFuncCondition()
     {
         if(!FuncCondition())
+        {
+            SimpleCondition tempLast = this;
+            while (tempLast.nextSimpleCondition != null)
+            {
+                tempLast = tempLast.nextSimpleCondition;
+            }
+            tempLast.CallNegResult();
             return false;
+        }
+            
         if (nextSimpleCondition == null)
         {
-            CallAllResult();
+            CallPosResult();
             return true;
         }
-        return nextSimpleCondition.CallFuncCondtion();
+        return nextSimpleCondition.CallFuncCondition();
     }
-    public void CallAllResult()
+    void CallNegResult()
+    {
+        foreach (var simpleResult in simpleResults)
+            simpleResult.result.Invoke(false);
+    }
+    public void CallPosResult()
     {
         if (usedCount >= usedThreshold)
         {
-            simpleResult.result.Invoke(false);
+            CallNegResult();
             return;
         }
-        simpleResult.result.Invoke(true);
+        foreach (var simpleResult in simpleResults)
+            simpleResult.result.Invoke(true);
         if (usedOnce)
         {
             usedCount++;

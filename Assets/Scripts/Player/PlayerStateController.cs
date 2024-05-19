@@ -50,6 +50,10 @@ public class PlayerStateController : Singleton<PlayerStateController>
     {
         GetComponent<PlayerInput>().enabled = !IsBusy();
     }
+    public STATE GetState()
+    {
+        return state.Value;
+    }
     public void SetState(STATE newState)
     {
         state.Value = newState;

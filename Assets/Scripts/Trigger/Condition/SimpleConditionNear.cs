@@ -17,8 +17,11 @@ public class SimpleConditionNear : SimpleCondition
     [SerializeField]
     float nearDistance;
 
-    
 
+    private void Update()
+    {
+        CallFuncCondition();
+    }
     protected override bool FuncCondition()
     {
         if (transform.tag.CompareTo("Player") == 0 ||  target.tag.CompareTo("Player") == 0)

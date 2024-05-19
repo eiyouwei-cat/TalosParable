@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class UIInteract :MonoBehaviour
     public Text text_availableKeyCode;
     public Text text_info;
 }
+[Serializable]
 public class UIInteractInfo
 {
     public KeyCode availableKeyCode;

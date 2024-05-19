@@ -14,11 +14,13 @@ public class SimpleResultFullLog : SimpleResult
     TypeWriter text;
     [SerializeField]
     string[] content;
-    protected override void FuncSimpleResult(bool satisfied = false, Action nextCallback = null)
+    protected override void FuncSimpleResult(bool satisfied = false)
     {
-        panel_Text.StartFade(true, delegate ()
+        if (!satisfied)
+            return;
+            panel_Text.StartFade(true, delegate ()
         {
-            text.StartType(content, nextCallback);
+            text.StartType(content);
             PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText);
         });
     }
