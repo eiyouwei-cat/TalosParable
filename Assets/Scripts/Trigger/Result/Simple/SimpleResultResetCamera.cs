@@ -16,15 +16,14 @@ public class SimpleResultResetCamera : SimpleResult
     Vector3 posStart = new Vector3(0f, 1.6f, 2f);
     [SerializeField]
     Vector3 posEnd = new Vector3(0f, 1.6f, 4f);
-    protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
+    protected override void FuncSimpleResult(bool satisfied, Action nextCallback = null)
     {
         if(!satisfied)
-            return false;
+            return;
             MyCamera.Instance.camera.enabled = true;
         //Camera.main.transform.position = MyCamera.Instance.camera.m_Follow.parent.position + posStart;
         //Camera.main.transform.rotation = new Quaternion(0f,180f,0f,0f);
         //StartCoroutine(ResetZ());
-        return true;
     }
 
     //IEnumerator ResetZ()

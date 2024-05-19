@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SimpleResult : MonoBehaviour
 {
-    public delegate bool Result(bool satisfied);
+    public delegate void Result(bool satisfied);
     public Result result;
     [SerializeField]
     protected enum ResultType
@@ -19,8 +19,8 @@ public class SimpleResult : MonoBehaviour
     protected ResultType resultType = ResultType.Simple;
     #region Next
     [HelpBox("Next",HelpBoxType.Info)]
-    [SerializeField]
-    protected Trigger nextTrigger;
+    //[SerializeField]
+    //protected TriggerResult nextTrigger;
     protected virtual void Initialize()
     {
         if (!gameObject.activeSelf)
@@ -28,13 +28,14 @@ public class SimpleResult : MonoBehaviour
         //next
         if (resultType == ResultType.Next)
         {
-            if (nextTrigger == null)
+            //if (nextTrigger == null)
             {
                 Debug.LogError(name + " NULL next trigger");
                 return;
             }
-            nextTrigger.isNexted = true;
-            nextTrigger.usedOnce = GetComponent<Trigger>().usedOnce;
+            //TODO NEXT ?!!
+            //nextTrigger.isNexted = true;
+            //nextTrigger.usedOnce = GetComponent<TriggerResult>().usedOnce;
         }
         ////delay
         if (resultType == ResultType.Delay)
@@ -58,7 +59,7 @@ public class SimpleResult : MonoBehaviour
     protected SimpleResult delayResult;
     [SerializeField]
     protected bool forceChangeToBusyState = false;
-    protected virtual bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
+    protected virtual void FuncSimpleResult(bool satisfied = false,Action nextCallback = null)
     {
         throw new NotImplementedException();
     }
@@ -77,28 +78,28 @@ public class SimpleResult : MonoBehaviour
         result += FuncCallResult;
         //Initialize();
     }
-    protected virtual bool FuncCallResult(bool satisfied)
+    protected virtual void FuncCallResult(bool satisfied)
     {
+        //TODO true or false ??
         switch (resultType)
         {
             case ResultType.Delay:
-                FuncSimpleResult(satisfied, null);
-                //EndedCallback?.Invoke();
-                if (satisfied)
-                    StartCoroutine(Delay());
-                return satisfied;
+                FuncSimpleResult(true);
+                StartCoroutine(Delay());
+                break;
             case ResultType.Next:
-                if(satisfied && GetComponent<SimpleConditionInput>())
+                if(GetComponent<SimpleConditionInput>())
                 {
                     ;
                 }
-                FuncSimpleResult(satisfied, delegate () {satisfied = nextTrigger.CheckCondition() && satisfied;});
-                return satisfied;
+                FuncSimpleResult(satisfied);
+                //TODO NEXT ?!!
+                //FuncSimpleResult(satisfied, delegate () {satisfied = nextTrigger.CallAllResult() && satisfied;});
+                break;
             case ResultType.Simple:
-                FuncSimpleResult(satisfied, null);
-                //EndedCallback?.Invoke();
-                return satisfied;
-            default:return false;
+                FuncSimpleResult(true);
+                break;
+            default: break;
         }
     }
 

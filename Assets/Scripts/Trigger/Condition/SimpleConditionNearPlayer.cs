@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SimpleConditionNearPlayer : SimpleConditionNear
 {
+    [HelpBox("NearPlayer", HelpBoxType.Info)]
     protected override void OnValidate()
     {
         base.OnValidate();
-        self = transform;
         target = PlayerStateController.Instance.transform;
     }
 }

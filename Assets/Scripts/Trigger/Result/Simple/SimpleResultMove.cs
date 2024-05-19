@@ -51,13 +51,12 @@ public class SimpleResultMove : SimpleResult
         }
         
     }
-    protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
+    protected override void FuncSimpleResult(bool satisfied, Action nextCallback = null)
     {
         if (!satisfied)
-            return false;
+            return;
         tarId = 0;
         StartCoroutine(Move());
-        return true;
     }
     IEnumerator Move()
     {

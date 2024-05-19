@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class SimpleConditionInput : SimpleCondition
 {
+    [HelpBox("Input", HelpBoxType.Info)]
+    [HideInInspector]
+    public int aa;
     [SerializeField]
     [HelpBox("Forced By Last Trigger",HelpBoxType.Warning)]
     KeyCode keyCode = KeyCode.None;
     enum InputType
     {
         KeyDown,
+        KeyKeep,
     };
     [SerializeField]
     InputType inputType;
@@ -30,8 +34,11 @@ public class SimpleConditionInput : SimpleCondition
         {
             case InputType.KeyDown:
                 return Input.GetKeyDown(KeyCode);
+            case InputType.KeyKeep:
+                return Input.GetKey(KeyCode);
             default:
                 return false;
         }
     }
+
 }

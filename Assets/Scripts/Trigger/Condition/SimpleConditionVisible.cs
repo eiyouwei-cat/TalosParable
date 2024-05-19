@@ -3,7 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(SimpleResultUIInteract))]
 public class SimpleConditionVisible : SimpleCondition
 {
-    //[SerializeField]
+    [HelpBox("Visible", HelpBoxType.Info)]
+
+    [SerializeField]
     bool visible = false;
     private void OnBecameVisible()
     {
@@ -16,8 +18,9 @@ public class SimpleConditionVisible : SimpleCondition
     }
     protected override bool FuncCondition()
     {
-        if (PlayerStateController.Instance.IsBusy())
-            return false;
+        //if (PlayerStateController.Instance.IsBusy())
+        //    return false;
         return visible;
     }
+
 }
