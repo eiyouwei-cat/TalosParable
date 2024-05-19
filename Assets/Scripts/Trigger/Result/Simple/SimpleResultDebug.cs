@@ -8,11 +8,10 @@ public class SimpleResultDebug : SimpleResult
     [HelpBox("Debug",HelpBoxType.Info)]
     [SerializeField]
     string debugInfo;
-    protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
+    protected override void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
         if(!satisfied)
-            return false;
+            return;
         Debug.Log(name + " "+ debugInfo + " (Triggered)");
-        return true;
     }
 }

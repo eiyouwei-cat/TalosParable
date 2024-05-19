@@ -5,24 +5,23 @@ using UnityEngine;
 using UnityEngine.Analytics;
 
 
-public class SimpleResultTypeText : SimpleResult
+public class SimpleResultFullLog : SimpleResult
 {
-    [HelpBox("Type",HelpBoxType.Info)]
+    [HelpBox("FullLog", HelpBoxType.Info)]
     [SerializeField]
     Fadable panel_Text;
     [SerializeField]
     TypeWriter text;
     [SerializeField]
     string[] content;
-    protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
+    protected override void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
         if (!satisfied)
-            return false;
+            return;
         panel_Text.StartFade(true, delegate ()
         {
-            text.StartType(content, nextCallback);
+            text.StartType(content, endCall);
             PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText);
         });
-        return true;
     }
 }

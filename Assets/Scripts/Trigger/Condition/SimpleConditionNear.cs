@@ -5,35 +5,38 @@ using UnityEngine;
 
 public class SimpleConditionNear : SimpleCondition
 {
+    [HelpBox("Near", HelpBoxType.Info)]
+
     //TODO visible
     [SerializeField]
     bool visible = false;
     [SerializeField]
     GameObject nearSphere;
     [SerializeField]
-    Transform self;
-    [SerializeField]
-    Transform target;
+    protected Transform target;
     [SerializeField]
     float nearDistance;
 
+
+    private void Update()
+    {
+        CallFuncCondition();
+    }
     protected override bool FuncCondition()
     {
-        if (self.tag.CompareTo("Player") == 0 || target.tag.CompareTo("Player") == 0)
+        if (transform.tag.CompareTo("Player") == 0 ||  target.tag.CompareTo("Player") == 0)
         {
             if(PlayerStateController.Instance.IsBusy())
                 return false;
         }
-        return (self.position - target.position).magnitude <= nearDistance;
+        return (transform.position - target.position).magnitude <= nearDistance;
     }
-    private void OnValidate()
+    protected virtual void OnValidate()
     {
         if (!gameObject.activeSelf)
             return;
-        nearSphere.transform.parent = null;
+        nearSphere.transform.position = transform.position;
         nearSphere.transform.localScale = 2 * nearDistance * Vector3.one;
-        nearSphere.transform.parent = transform;
-        nearSphere.transform.localPosition = Vector3.zero;
         nearSphere.SetActive(visible);
     }
 }

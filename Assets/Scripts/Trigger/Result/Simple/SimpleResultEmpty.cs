@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SimpleResultEmpty : SimpleResult
 {
-    protected override bool FuncSimpleResult(bool satisfied, Action nextCallback = null)
+    protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
-        return true;
+        return;
     }
 }

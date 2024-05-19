@@ -16,6 +16,8 @@ public class Fadable : MonoBehaviour
     bool isFading = false;
     public void StartFade(bool isIn, Action callback = null)
     {
+        if (isFading && isIn)
+            return;
         StopFade();
         StartCoroutine(Fade(isIn, callback));
     }
@@ -26,13 +28,12 @@ public class Fadable : MonoBehaviour
     }
     IEnumerator Fade(bool isIn, Action callback = null)
     {
-        if(isFading && isIn)
-            yield break;
+        //if(isFading && isIn)
+        //    yield break;
         isFading = true;
         if (!isIn)
             panelContent.SetActive(false);
         panelBack.gameObject.SetActive(true);
-        6.
         float time,timer;
         time = timer = isIn ? inDuration : outDuration;
         while (timer > 0)

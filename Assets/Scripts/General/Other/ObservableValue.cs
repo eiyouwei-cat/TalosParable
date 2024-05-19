@@ -18,7 +18,7 @@ public class ObservableValue<T>
         set
         {
             T oldValue = this.value;
-            if (this.value.Equals(value))
+            if (this.value != null && this.value.Equals(value))
                 return;
             this.value = value;
             OnValueChangeEvent?.Invoke(oldValue, value);

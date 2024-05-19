@@ -7,14 +7,14 @@ public class UIManager : Singleton<UIManager>
     [SerializeField]
     List<UIInteractInfo> uiInteracts = new List<UIInteractInfo>();
     [SerializeField]
-    GameObject panel_UIInteract;
+    GameObject content_UIInteract;
     [SerializeField]
     GameObject prefab_UIInteract;
-    private void Awake()
+    public void Initialize()
     {
         RefreshUIInteract();
     }
-    #region UI Interact
+    #region UIInteract
     public void TryAddUIInteract(UIInteractInfo addU)
     {
         if (uiInteracts.Contains(addU))
@@ -31,11 +31,11 @@ public class UIManager : Singleton<UIManager>
     }
     void RefreshUIInteract()
     {
-        ClearActiveChild(panel_UIInteract.transform.GetChild(0).GetChild(0));
-        panel_UIInteract.SetActive(uiInteracts.Count != 0);
+        ClearActiveChild(content_UIInteract.transform);
+        content_UIInteract.transform.parent.parent.gameObject.SetActive(uiInteracts.Count != 0);
         for(int i = 0;i< uiInteracts.Count; i++)
         {
-            GameObject g = Instantiate(prefab_UIInteract,panel_UIInteract.transform.GetChild(0).GetChild(0));
+            GameObject g = Instantiate(prefab_UIInteract,content_UIInteract.transform);
             g.GetComponent<UIInteract>().text_availableKeyCode.text = uiInteracts[i].availableKeyCode.ToString();
             g.GetComponent<UIInteract>().text_info.text = uiInteracts[i].info.ToString();
             g.SetActive(true);
@@ -49,3 +49,4 @@ public class UIManager : Singleton<UIManager>
                 Destroy(p.GetChild(i).gameObject);
     }
 }
+ 
