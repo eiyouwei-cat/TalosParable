@@ -6,10 +6,10 @@ using UnityEngine;
 public class SimpleConditionNear : SimpleCondition
 {
     //TODO visible
-    //[SerializeField]
-    //bool visible = false;
-    //[SerializeField]
-    //GameObject sphere;
+    [SerializeField]
+    bool visible = false;
+    [SerializeField]
+    GameObject nearSphere;
     [SerializeField]
     Transform self;
     [SerializeField]
@@ -26,5 +26,14 @@ public class SimpleConditionNear : SimpleCondition
         }
         return (self.position - target.position).magnitude <= nearDistance;
     }
-
+    private void OnValidate()
+    {
+        if (!gameObject.activeSelf)
+            return;
+        nearSphere.transform.parent = null;
+        nearSphere.transform.localScale = 2 * nearDistance * Vector3.one;
+        nearSphere.transform.parent = transform;
+        nearSphere.transform.localPosition = Vector3.zero;
+        nearSphere.SetActive(visible);
+    }
 }

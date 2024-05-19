@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyCamera : MonoBehaviour
+public class MyCamera : Singleton<MyCamera>
 {
-    new CinemachineVirtualCamera camera;
+    public new CinemachineVirtualCamera camera;
     private void Awake()
     {
         camera = GetComponent<CinemachineVirtualCamera>();
@@ -43,5 +43,4 @@ public class MyCamera : MonoBehaviour
     }
     #endregion
 
-    
 }

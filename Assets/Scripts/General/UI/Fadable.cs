@@ -13,6 +13,7 @@ public class Fadable : MonoBehaviour
     [HelpBox("第0个子物体是背景、第1个子物体是内容", HelpBoxType.Warning/*enum selection*/, 0/*shown order*/)]
     public float inDuration = 0.3f;
     public float outDuration = 3f;
+    bool isFading = false;
     public void StartFade(bool isIn, Action callback = null)
     {
         StopFade();
@@ -25,9 +26,13 @@ public class Fadable : MonoBehaviour
     }
     IEnumerator Fade(bool isIn, Action callback = null)
     {
+        if(isFading && isIn)
+            yield break;
+        isFading = true;
         if (!isIn)
             panelContent.SetActive(false);
         panelBack.gameObject.SetActive(true);
+        6.
         float time,timer;
         time = timer = isIn ? inDuration : outDuration;
         while (timer > 0)
@@ -40,8 +45,8 @@ public class Fadable : MonoBehaviour
             panelBack.gameObject.SetActive(false);
         if (isIn)
             panelContent.SetActive(true);
-        if(callback != null)
-            callback();
+        callback?.Invoke();
+        isFading = false;
         yield break;
     }
 }

@@ -3,9 +3,8 @@ using UnityEngine;
 public class Trigger : MonoBehaviour
 {
     public bool isNexted = false;
+    public bool usedOnce = false;
 
-    [SerializeField]
-    protected bool usedOnce = false;
     [SerializeField]
     protected bool used = false;
 
@@ -15,6 +14,7 @@ public class Trigger : MonoBehaviour
     SimpleResult[] triggerResults = null;
 
     public SimpleResult[] TriggerResults { get => triggerResults; set => triggerResults = value; }
+    
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class Trigger : MonoBehaviour
     void Initialize()
     {
         triggerConditions = GetComponents<SimpleCondition>();
-        if (triggerConditions.Length == 0)
+        if (!isNexted && triggerConditions.Length == 0)
             Debug.LogError("NULL Trigger Condition!");
         TriggerResults = GetComponents<SimpleResult>();
         if(TriggerResults.Length == 0)
@@ -50,7 +50,6 @@ public class Trigger : MonoBehaviour
                 break;
             }
         }
-        
         foreach (SimpleResult simpleResult in TriggerResults)
         {
             satisfied = simpleResult.result.Invoke(satisfied) && satisfied;
@@ -64,7 +63,7 @@ public class Trigger : MonoBehaviour
             }
         }
            
-        return used;
+        return satisfied;
     }
     
     
