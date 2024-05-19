@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(SimpleConditionInput))]
 public class SimpleResultUIInteract : SimpleResult
 {
-    protected override void FuncSimpleResult(bool satisfied)
+    protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
         UIInteractInfo uiInteract = GetComponent<UIInteractItem>().GetCurUIInteractInfo();
         if (satisfied)

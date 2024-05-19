@@ -51,7 +51,7 @@ public class SimpleResultMove : SimpleResult
         }
         
     }
-    protected override void FuncSimpleResult(bool satisfied)
+    protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
         if (!satisfied)
             return;

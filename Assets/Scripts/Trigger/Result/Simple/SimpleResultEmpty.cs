@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SimpleResultEmpty : SimpleResult
 {
-    protected override void FuncSimpleResult(bool satisfied)
+    protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
         return;
     }

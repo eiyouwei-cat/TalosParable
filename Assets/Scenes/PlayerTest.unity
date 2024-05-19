@@ -498,7 +498,7 @@ MonoBehaviour:
           list:
           - Key: {fileID: 334836477}
             Value: 3
-        priority: 0
+        priority: 2
       Value:
         availableKeyCode: 283
         info: TEST F2
@@ -770,7 +770,7 @@ MonoBehaviour:
   resultType: 1
   delayTime: 0
   delayResult: {fileID: 0}
-  forceChangeToBusyState: 0
+  forceChangeToBusyState: 1
   panel_Text: {fileID: 1702422268}
   text: {fileID: 98540073}
   content:
@@ -945,7 +945,7 @@ MonoBehaviour:
   resultType: 1
   delayTime: 0
   delayResult: {fileID: 0}
-  forceChangeToBusyState: 0
+  forceChangeToBusyState: 1
 --- !u!114 &195517764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,10 +1429,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534625b218ea670489dd120144fd3309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultType: 0
+  resultType: 1
   delayTime: 0
-  delayResult: {fileID: 0}
-  forceChangeToBusyState: 0
+  delayResult: {fileID: 999993520}
+  forceChangeToBusyState: 1
   panel_Text: {fileID: 1702422268}
   text: {fileID: 98540073}
   content:
@@ -3348,7 +3348,7 @@ GameObject:
   - component: {fileID: 999993519}
   - component: {fileID: 999993520}
   m_Layer: 0
-  m_Name: Trigger_2
+  m_Name: Result_Debug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3380,11 +3380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81465ef5359fb8f4cae0f91e6bbc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultType: 2
-  delayTime: 2
-  delayResult: {fileID: 1294172626}
-  forceChangeToBusyState: 1
-  debugInfo: 555
+  resultType: 0
+  delayTime: 0
+  delayResult: {fileID: 0}
+  forceChangeToBusyState: 0
+  debugInfo: 666
 --- !u!1 &1010898932
 GameObject:
   m_ObjectHideFlags: 0
@@ -4440,7 +4440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1294172625
 Transform:
   m_ObjectHideFlags: 0
@@ -6275,7 +6275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2032332151
 Transform:
   m_ObjectHideFlags: 0

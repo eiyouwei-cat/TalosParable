@@ -8,7 +8,7 @@ public class SimpleResultSetPlayerState : SimpleResult
     [SerializeField]
     PlayerStateController.STATE newState;
 
-    protected override void FuncSimpleResult(bool satisfied)
+    protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
         if (!satisfied)
             return;

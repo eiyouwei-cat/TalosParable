@@ -12,7 +12,6 @@ public class SimpleResult : MonoBehaviour
     protected enum ResultType
     {
         Simple,
-        Next,
         Delay
     };
     [SerializeField]
@@ -42,7 +41,7 @@ public class SimpleResult : MonoBehaviour
     protected SimpleResult delayResult;
     [SerializeField]
     protected bool forceChangeToBusyState = false;
-    protected virtual void FuncSimpleResult(bool satisfied = false)
+    protected virtual void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
         throw new NotImplementedException();
     }
@@ -66,8 +65,7 @@ public class SimpleResult : MonoBehaviour
         switch (resultType)
         {
             case ResultType.Delay:
-                FuncSimpleResult(satisfied);
-                StartCoroutine(Delay());
+                FuncSimpleResult(satisfied,delegate { StartCoroutine(Delay()); });
                 break;
             case ResultType.Simple:
                 FuncSimpleResult(satisfied);

@@ -16,7 +16,7 @@ public class SimpleResultResetCamera : SimpleResult
     Vector3 posStart = new Vector3(0f, 1.6f, 2f);
     [SerializeField]
     Vector3 posEnd = new Vector3(0f, 1.6f, 4f);
-    protected override void FuncSimpleResult(bool satisfied)
+    protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
         if(!satisfied)
             return;
