@@ -26,12 +26,6 @@ public class SimpleResultMove : SimpleResult
         base.Awake();
         if (tryMove.GetComponent<Camera>())
         {
-            if (resultType != ResultType.Delay)
-            {
-                Debug.LogError(name + "Not of delay type (move camera)!");
-            }
-
-
             if(delayResult == null)
             {
                 Debug.LogError(name + "NULL delay result");
@@ -41,24 +35,15 @@ public class SimpleResultMove : SimpleResult
                 Debug.LogError(name + "delay not reset camera");
             }
         }
-
-        float totalTime = 0f;
-        foreach(var t in durations)
-            totalTime += t;
-        if(delayTime < totalTime + 0.5f)
-        {
-            Debug.LogError(name + "Delay time too short!");
-        }
-        
     }
     protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
         if (!satisfied)
             return;
         tarId = 0;
-        StartCoroutine(Move());
+        StartCoroutine(Move(endCall));
     }
-    IEnumerator Move()
+    IEnumerator Move(Action endCall = null)
     {
         if(!TryCalculateSpeed())
             yield break;
@@ -73,6 +58,7 @@ public class SimpleResultMove : SimpleResult
             if (tarId >= stations.Count)
             {
                 //BusyCollector.RefreshList(added: false, this);
+                endCall();
                 yield break;
             }
             tryMove.Translate(speed * Vector3.Normalize(stations[tarId].position - tryMove.position), Space.World);

@@ -54,8 +54,12 @@ public class PlayerStateController : Singleton<PlayerStateController>
     {
         return state.Value;
     }
-    public void SetState(STATE newState)
+    public void TrySetState(STATE newState)
     {
+        Debug.Log("Try set :" + newState.ToString());
+        if (BusyCollector.isBusy)
+            return;
+
         state.Value = newState;
     }
     public bool IsBusy()

@@ -12,7 +12,7 @@ public class SimpleResultSetPlayerState : SimpleResult
     {
         if (!satisfied)
             return;
-        PlayerStateController.Instance.SetState(newState);
+        PlayerStateController.Instance.TrySetState(newState);
     }
 
 }

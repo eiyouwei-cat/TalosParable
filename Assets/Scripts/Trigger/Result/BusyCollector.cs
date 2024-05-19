@@ -5,7 +5,7 @@ using UnityEngine;
 public class BusyCollector : MonoBehaviour
 {
     public static List<SimpleResult> busyMoves = new List<SimpleResult>();
-
+    public static bool isBusy => busyMoves.Count > 0;
     public static void RefreshList(bool added,SimpleResult srm)
     {
         if(added)
@@ -14,9 +14,9 @@ public class BusyCollector : MonoBehaviour
             busyMoves.Remove(srm);
         if (busyMoves.Count > 0)
         {
-            PlayerStateController.Instance.SetState(PlayerStateController.STATE.forceMovingSth);
+            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.forceMovingSth);
         }
         else
-            PlayerStateController.Instance.SetState(PlayerStateController.STATE.NULL);
+            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.NULL);
     }
 }

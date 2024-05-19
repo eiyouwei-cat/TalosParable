@@ -8,30 +8,6 @@ public class SimpleResult : MonoBehaviour
 {
     public delegate void Result(bool satisfied);
     public Result result;
-    [SerializeField]
-    protected enum ResultType
-    {
-        Simple,
-        Delay
-    };
-    [SerializeField]
-    protected ResultType resultType = ResultType.Simple;
-    
-    protected virtual void Initialize()
-    {
-        if (!gameObject.activeSelf)
-            return;
-        ////delay
-        if (resultType == ResultType.Delay)
-        {
-            forceChangeToBusyState = true;
-        }
-
-    }
-    private void OnValidate()
-    {
-        Initialize();
-    }
 
     #region Delay
     [HelpBox("Delay", HelpBoxType.Info)]
@@ -47,9 +23,12 @@ public class SimpleResult : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        BusyCollector.RefreshList(added: true, this);
+        BusyCollector.RefreshList(added: forceChangeToBusyState, this);
         yield return new WaitForSeconds(delayTime);
-        delayResult?.FuncCallResult(true);
+        if(delayResult != null)
+        {
+            delayResult?.FuncCallResult(true);
+        }
         BusyCollector.RefreshList(added: false, this);
         yield break;
     }
@@ -62,16 +41,7 @@ public class SimpleResult : MonoBehaviour
     }
     protected virtual void FuncCallResult(bool satisfied)
     {
-        switch (resultType)
-        {
-            case ResultType.Delay:
-                FuncSimpleResult(satisfied,delegate { StartCoroutine(Delay()); });
-                break;
-            case ResultType.Simple:
-                FuncSimpleResult(satisfied);
-                break;
-            default: break;
-        }
+        FuncSimpleResult(satisfied,delegate { StartCoroutine(Delay()); });
     }
 
 }

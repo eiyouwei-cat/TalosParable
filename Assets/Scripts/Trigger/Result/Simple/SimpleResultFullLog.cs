@@ -21,7 +21,7 @@ public class SimpleResultFullLog : SimpleResult
         panel_Text.StartFade(true, delegate ()
         {
             text.StartType(content, endCall);
-            PlayerStateController.Instance.SetState(PlayerStateController.STATE.renderingText);
+            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
         });
     }
 }

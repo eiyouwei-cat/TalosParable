@@ -23,7 +23,7 @@ public class TypeWriter : Singleton<TypeWriter>
         {
             m_callback = delegate ()
             {
-                transform.parent.GetComponent<Fadable>().StartFade(false, delegate () { PlayerStateController.Instance.SetState(PlayerStateController.STATE.NULL); });
+                transform.parent.GetComponent<Fadable>().StartFade(false, delegate () { PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.NULL); });
                 m_callback_added?.Invoke();
             };
             TrySkipType(m_callback);
