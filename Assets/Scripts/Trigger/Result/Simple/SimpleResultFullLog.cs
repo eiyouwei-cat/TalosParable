@@ -18,9 +18,10 @@ public class SimpleResultFullLog : SimpleResult
             return;
         UIManager.Instance.panel_FullLog.StartFade(true, delegate ()
         {
+            BusyCollector.Instance.RefreshList(added: true, this);
             UIManager.Instance.text_FullLog.SetColor(tarColor);
             UIManager.Instance.text_FullLog.StartType(content, endCall);
-            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
+            //PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
         });
     }
 }

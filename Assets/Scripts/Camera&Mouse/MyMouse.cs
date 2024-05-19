@@ -6,7 +6,7 @@ public class MyMouse : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.LeftAlt) || PlayerStateController.Instance.IsBusy())
         {
             Cursor.lockState = CursorLockMode.None;//鼠标解锁并显示
         }

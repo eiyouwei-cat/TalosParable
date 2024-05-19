@@ -20,7 +20,7 @@ public class SimpleConditionNear : SimpleCondition
 
     private void Update()
     {
-        CallFuncCondition();
+        CallFuncCondition();    
     }
     protected override bool FuncCondition()
     {

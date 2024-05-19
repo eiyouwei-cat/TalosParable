@@ -7,12 +7,12 @@ public abstract class SimpleCondition : MonoBehaviour
     public delegate bool Condition();
     public Condition condition;
 
-    [SerializeField]
-    protected int usedThreshold = 1;
-    [SerializeField]
-    protected int usedCount = 0;
-    [SerializeField]
-    protected bool usedOnce = true;
+    //[SerializeField]
+    //protected int usedThreshold = 1;
+    //[SerializeField]
+    //protected int usedCount = 0;
+    //[SerializeField]
+    //protected bool usedOnce = true;
     [SerializeField]
     protected SimpleCondition nextSimpleCondition;
     [SerializeField]
@@ -58,16 +58,16 @@ public abstract class SimpleCondition : MonoBehaviour
     }
     public void CallPosResult()
     {
-        if (usedCount >= usedThreshold)
-        {
-            CallNegResult();
-            return;
-        }
+        //if (usedCount >= usedThreshold)
+        //{
+        //    CallNegResult();
+        //    return;
+        //}
         foreach (var simpleResult in simpleResults)
             simpleResult.result.Invoke(true);
-        if (usedOnce)
-        {
-            usedCount++;
-        }
+        //if (usedOnce)
+        //{
+        //    usedCount++;
+        //}
     }
 }

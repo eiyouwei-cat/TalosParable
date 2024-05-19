@@ -18,7 +18,7 @@ public class ItemCondition
     {
         foreach(var it in countCondition.Keys)
         {
-            if (!ItemManager.Instance.HaveItem(it, countCondition[it]))
+            if (!ItemManager.Instance.HaveEnoughItem(it, countCondition[it]))
                 return false;
         }
         return true;

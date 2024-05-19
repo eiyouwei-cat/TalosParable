@@ -13,6 +13,7 @@ public class SimpleResultPlayerAbility : SimpleResult
     {
         if (!satisfied)
             return;
+        PlayerStateController.Instance.GetComponent<StarterAssetsInputs>().sprint = enable;
         ThirdPersonController.canJump = ThirdPersonController.canSprint = enable;
         endCall?.Invoke();
     }

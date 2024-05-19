@@ -7,7 +7,7 @@ public class ItemManager : Singleton<ItemManager>
     [SerializeField]
     List<Item> items = new List<Item>();
 
-    public bool HaveItem(Item item,int count)
+    public bool HaveEnoughItem(Item item,int count)
     {
         foreach(var it in items)
         {
@@ -16,5 +16,26 @@ public class ItemManager : Singleton<ItemManager>
                     return true;
         }
         return false;
+    }
+    public int GetCount(Item item)
+    {
+        foreach (var it in items)
+        {
+            if (it.Name == item.Name)
+                return it.Count;
+        }
+        return 0;
+    }
+    public void AddItem(Item item)
+    {
+        foreach (var it in items)
+        {
+            if (it.Name == item.Name)
+            {
+                it.Count += item.Count;
+                return;
+            }
+        }
+        items.Add(item);
     }
 }

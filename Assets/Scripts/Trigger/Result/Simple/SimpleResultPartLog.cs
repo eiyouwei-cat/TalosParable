@@ -18,7 +18,8 @@ public class SimpleResultPartLog : SimpleResult
         {
             UIManager.Instance.text_PartLog.SetColor(tarColor);
             UIManager.Instance.text_PartLog.StartType(content, endCall);
-            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
+            BusyCollector.Instance.RefreshList(added: true, this);
+            //PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
         });
     }
 }

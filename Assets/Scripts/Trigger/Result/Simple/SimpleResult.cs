@@ -40,7 +40,7 @@ public class SimpleResult : MonoBehaviour
     }
     protected virtual void FuncCallResult(bool satisfied)
     {
-        FuncSimpleResult(satisfied,delegate { StartCoroutine(Delay()); });
+        FuncSimpleResult(satisfied,delegate { BusyCollector.Instance.RefreshList(added: false, this); StartCoroutine(Delay()); });
     }
 
 }

@@ -8,8 +8,9 @@ public class PlayerStateController : Singleton<PlayerStateController>
     public enum STATE
     {
         NULL,
-        renderingText,//演出中
+        renderingText,//剧情演出中
         forceDelay,//延迟调用间隙
+        checkItem,//获得物体
     }
     [SerializeField]
     ObservableValue<STATE> state;
@@ -57,8 +58,8 @@ public class PlayerStateController : Singleton<PlayerStateController>
     public void TrySetState(STATE newState)
     {
         Debug.Log("Try set :" + newState.ToString());
-        if (BusyCollector.Instance.isBusy)
-            return;
+        //if (BusyCollector.Instance.isBusy)
+        //    return;
 
         state.Value = newState;
     }
