@@ -14,12 +14,15 @@ public class SimpleResultFullLog : SimpleResult
     TypeWriter text;
     [SerializeField]
     string[] content;
+    [SerializeField]
+    Color tarColor;
     protected override void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
         if (!satisfied)
             return;
         panel_Text.StartFade(true, delegate ()
         {
+            text.SetColor(tarColor);
             text.StartType(content, endCall);
             PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
         });

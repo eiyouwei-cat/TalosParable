@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class SimpleResultMove : SimpleResult
 {
-    [HelpBox("Move",HelpBoxType.Info)]
+    [HelpBox("Move", HelpBoxType.Info)]
+    [SerializeField]
+    bool visible = true;
     [SerializeField]
     Transform tryMove;
     [SerializeField]
@@ -20,7 +22,11 @@ public class SimpleResultMove : SimpleResult
     [SerializeField]
     float speed;
 
-
+    protected virtual void OnValidate()
+    {
+        foreach (Transform t in stations)
+            t.gameObject.SetActive(true);
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -47,8 +53,8 @@ public class SimpleResultMove : SimpleResult
     {
         if(!TryCalculateSpeed())
             yield break;
-        //if (forceChangeToBusyState)
-        //    BusyCollector.RefreshList(added: true, this);
+        if (forceChangeToBusyState)
+            BusyCollector.Instance.RefreshList(added: true, this);
         if (tryMove.GetComponent<Camera>())
         {
             MyCamera.Instance.camera.enabled = false;
@@ -57,7 +63,7 @@ public class SimpleResultMove : SimpleResult
         {
             if (tarId >= stations.Count)
             {
-                //BusyCollector.RefreshList(added: false, this);
+                BusyCollector.Instance.RefreshList(added: false, this);
                 endCall();
                 yield break;
             }

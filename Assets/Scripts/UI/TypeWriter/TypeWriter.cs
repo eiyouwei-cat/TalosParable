@@ -75,4 +75,8 @@ public class TypeWriter : Singleton<TypeWriter>
             yield return new WaitForSeconds(typeCD);
         }   
     }
+    public void SetColor(Color f_color)
+    {
+        GetComponent<Text>().color = f_color;
+    }
 }

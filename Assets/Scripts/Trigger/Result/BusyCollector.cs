@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BusyCollector : MonoBehaviour
+public class BusyCollector : Singleton<BusyCollector>
 {
-    public static List<SimpleResult> busyMoves = new List<SimpleResult>();
-    public static bool isBusy => busyMoves.Count > 0;
-    public static void RefreshList(bool added,SimpleResult srm)
+    public List<SimpleResult> busyMoves = new List<SimpleResult>();
+    public bool isBusy => busyMoves.Count > 0;
+    public void RefreshList(bool added,SimpleResult srm)
     {
         if(added)
             busyMoves.Add(srm);
@@ -14,7 +14,7 @@ public class BusyCollector : MonoBehaviour
             busyMoves.Remove(srm);
         if (busyMoves.Count > 0)
         {
-            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.forceMovingSth);
+            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.forceDelay);
         }
         else
             PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.NULL);

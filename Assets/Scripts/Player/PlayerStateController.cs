@@ -9,7 +9,7 @@ public class PlayerStateController : Singleton<PlayerStateController>
     {
         NULL,
         renderingText,//演出中
-        forceMovingSth,//移动某物体
+        forceDelay,//延迟调用间隙
     }
     [SerializeField]
     ObservableValue<STATE> state;
@@ -57,13 +57,13 @@ public class PlayerStateController : Singleton<PlayerStateController>
     public void TrySetState(STATE newState)
     {
         Debug.Log("Try set :" + newState.ToString());
-        if (BusyCollector.isBusy)
+        if (BusyCollector.Instance.isBusy)
             return;
 
         state.Value = newState;
     }
     public bool IsBusy()
     {
-        return state.Value == STATE.renderingText || state.Value == STATE.forceMovingSth;
+        return state.Value == STATE.renderingText || state.Value == STATE.forceDelay;
     }
 }

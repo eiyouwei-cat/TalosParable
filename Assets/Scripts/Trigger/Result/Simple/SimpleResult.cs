@@ -23,13 +23,12 @@ public class SimpleResult : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        BusyCollector.RefreshList(added: forceChangeToBusyState, this);
+        if (delayResult == null)
+            yield break;
+        BusyCollector.Instance.RefreshList(added: forceChangeToBusyState, this);
         yield return new WaitForSeconds(delayTime);
-        if(delayResult != null)
-        {
-            delayResult?.FuncCallResult(true);
-        }
-        BusyCollector.RefreshList(added: false, this);
+        delayResult?.FuncCallResult(true);
+        BusyCollector.Instance.RefreshList(added: false, this);
         yield break;
     }
     #endregion
