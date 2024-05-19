@@ -2,12 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
-
-public class SimpleResultFullLog : SimpleResult
+public class SimpleResultPartLog : SimpleResult
 {
-    [HelpBox("FullLog", HelpBoxType.Info)]
+    [HelpBox("PartLog", HelpBoxType.Info)]
     [SerializeField]
     string[] content;
     [SerializeField]
@@ -16,10 +14,10 @@ public class SimpleResultFullLog : SimpleResult
     {
         if (!satisfied)
             return;
-        UIManager.Instance.panel_FullLog.StartFade(true, delegate ()
+        UIManager.Instance.panel_PartLog.StartFade(true, delegate ()
         {
-            UIManager.Instance.text_FullLog.SetColor(tarColor);
-            UIManager.Instance.text_FullLog.StartType(content, endCall);
+            UIManager.Instance.text_PartLog.SetColor(tarColor);
+            UIManager.Instance.text_PartLog.StartType(content, endCall);
             PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.renderingText);
         });
     }

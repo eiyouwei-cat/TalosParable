@@ -3,18 +3,26 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    [Header("UIInteract")]
+    
+    public void Initialize()
+    {
+        RefreshUIInteract();
+    }
+    #region Dialog
+    [HelpBox("Dialog",HelpBoxType.Info)]
+    public Fadable panel_FullLog;
+    public TypeWriter text_FullLog;
+    public Fadable panel_PartLog;
+    public TypeWriter text_PartLog;
+    #endregion
+    #region UIInteract
+    [HelpBox("UIInteract", HelpBoxType.Info)]
     [SerializeField]
     List<UIInteractInfo> uiInteracts = new List<UIInteractInfo>();
     [SerializeField]
     GameObject content_UIInteract;
     [SerializeField]
     GameObject prefab_UIInteract;
-    public void Initialize()
-    {
-        RefreshUIInteract();
-    }
-    #region UIInteract
     public void TryAddUIInteract(UIInteractInfo addU)
     {
         if (uiInteracts.Contains(addU))

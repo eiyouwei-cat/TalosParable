@@ -454,8 +454,6 @@ MonoBehaviour:
   delayTime: 2
   delayResult: {fileID: 8510456457354680276}
   forceChangeToBusyState: 1
-  panel_Text: {fileID: 0}
-  text: {fileID: 0}
   content:
   - ... I preyed for a storm to set you back .
   - Whose fault is it , that our seeds have spread too far ,

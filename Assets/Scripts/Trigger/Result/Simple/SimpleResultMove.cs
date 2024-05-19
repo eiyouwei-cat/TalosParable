@@ -25,7 +25,7 @@ public class SimpleResultMove : SimpleResult
     protected virtual void OnValidate()
     {
         foreach (Transform t in stations)
-            t.gameObject.SetActive(true);
+            t.gameObject.SetActive(visible);
     }
     protected override void Awake()
     {
