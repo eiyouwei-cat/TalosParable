@@ -7,6 +7,8 @@ public class SimpleResultEmpty : SimpleResult
 {
     protected override void FuncSimpleResult(bool satisfied, Action endCall = null)
     {
-        return;
+        if (!satisfied)
+            return;
+        endCall?.Invoke();
     }
 }

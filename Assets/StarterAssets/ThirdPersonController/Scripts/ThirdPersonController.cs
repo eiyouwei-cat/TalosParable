@@ -20,7 +20,7 @@ namespace StarterAssets
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
-
+        public static bool canSprint = true;
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
@@ -35,7 +35,7 @@ namespace StarterAssets
         [Space(10)]
         [Tooltip("The height the player can jump")]
         public float JumpHeight = 1.2f;
-
+        public static bool canJump = true;
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
 
@@ -303,8 +303,8 @@ namespace StarterAssets
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight* -2f * Gravity);
+                    
                     // update animator if using character
                     if (_hasAnimator)
                     {

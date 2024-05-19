@@ -21,6 +21,7 @@ public class SimpleResultResetCamera : SimpleResult
         if(!satisfied)
             return;
         MyCamera.Instance.camera.enabled = true;
+        endCall?.Invoke();
         //Camera.main.transform.position = MyCamera.Instance.camera.m_Follow.parent.position + posStart;
         //Camera.main.transform.rotation = new Quaternion(0f,180f,0f,0f);
         //StartCoroutine(ResetZ());

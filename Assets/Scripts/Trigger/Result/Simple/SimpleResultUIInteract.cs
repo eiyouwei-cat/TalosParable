@@ -19,6 +19,7 @@ public class SimpleResultUIInteract : SimpleResult
         }
         else
             UIManager.Instance.TryRemoveUIInteract(uiInteract);
-        
+        endCall?.Invoke();
+
     }
 }

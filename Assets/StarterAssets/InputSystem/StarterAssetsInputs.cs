@@ -58,12 +58,12 @@ namespace StarterAssets
 
 		public void JumpInput(bool newJumpState)
 		{
-			jump = newJumpState;
+			jump = ThirdPersonController.canJump && newJumpState;
 		}
 
 		public void SprintInput(bool newSprintState)
 		{
-			sprint = newSprintState;
+			sprint = ThirdPersonController.canSprint && newSprintState;
 		}
 
 		private void OnApplicationFocus(bool hasFocus)

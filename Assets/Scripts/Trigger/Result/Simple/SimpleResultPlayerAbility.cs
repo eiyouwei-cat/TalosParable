@@ -1,18 +1,19 @@
+using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleResultDebug : SimpleResult
+public class SimpleResultPlayerAbility : SimpleResult
 {
-    [HelpBox("Debug",HelpBoxType.Info)]
+    [HelpBox("PlayerAbility",HelpBoxType.Info)]
     [SerializeField]
-    string debugInfo;
+    bool enable = false;
     protected override void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
-        if(!satisfied)
+        if (!satisfied)
             return;
-        Debug.Log(name + " "+ debugInfo + " (Triggered)");
+        ThirdPersonController.canJump = ThirdPersonController.canSprint = enable;
         endCall?.Invoke();
     }
 }

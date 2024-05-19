@@ -13,6 +13,7 @@ public class SimpleResultSetPlayerState : SimpleResult
         if (!satisfied)
             return;
         PlayerStateController.Instance.TrySetState(newState);
+        endCall?.Invoke();
     }
 
 }
