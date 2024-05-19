@@ -12,7 +12,6 @@ public class SimpleResultGetItem : SimpleResult
     {
         if (!satisfied)
             return;
-        ItemManager.Instance.AddItem(rewardItem);
         UIManager.Instance.UIOpenGetItem(rewardItem);
         BusyCollector.Instance.RefreshList(added: true, this);
         //PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.checkItem);

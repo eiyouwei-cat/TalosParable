@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
@@ -22,28 +23,47 @@ public class UIManager : Singleton<UIManager>
     #endregion
     #region GetItem
     public GameObject paenl_GetItem;
-    public GameObject content;
+    public GameObject itemContent;
+    public Button button_CloseItem;
     public Image itemImage;
     public Text itemGotNum;
     public Text itemStockNum;
     public Text itemDesc;
     [SerializeField]
-    float itemInTime = 0.3f;
+    float itemOpenTime = 1f;
+    [SerializeField]
+    float itemCloseTime = 0.5f;
     public void UIOpenGetItem(Item item)
     {
+        button_CloseItem.interactable = false;
         itemImage = item.sprite;
         itemGotNum.text = item.Count.ToString();
+        ItemManager.Instance.AddItem(item);
         itemStockNum.text = ItemManager.Instance.GetCount(item).ToString();
         itemDesc.text = item.Description.ToString();
         paenl_GetItem.SetActive(true);
-        content.transform.localScale = Vector3.zero;
-        content.transform.DOScale(1f, itemInTime).SetEase(Ease.OutBounce);
+        itemContent.transform.localScale = Vector3.zero;
+        itemContent.transform.DOScale(1f, itemOpenTime).SetEase(Ease.OutBounce);
+        StartCoroutine(nameof(UIOpenGetItem_2));
+    }
+    IEnumerator UIOpenGetItem_2()
+    {
+        yield return new WaitForSeconds(itemOpenTime + 0.2f);
+        button_CloseItem.interactable = true;
     }
     public Action closeItemCallback;
-    public void UICloseGetItem()
+    public void Call_Co_UICloseGetItem()
     {
+        button_CloseItem.interactable = false;
+        StartCoroutine(nameof(UICloseGetItem));
+    }
+    IEnumerator UICloseGetItem()
+    {
+        itemContent.transform.DOScale(0f, itemCloseTime).SetEase(Ease.InBounce);
+        yield return new WaitForSeconds(itemCloseTime+0.2f);
         paenl_GetItem.SetActive(false);
         closeItemCallback?.Invoke();
+        yield break;
     }
     #endregion
     #region UIInteract

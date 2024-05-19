@@ -499,7 +499,7 @@ MonoBehaviour:
           list:
           - Key: {fileID: 789464022}
             Value: 4
-        priority: 2
+        priority: 3
       Value:
         availableKeyCode: 282
         info: "\u8C03\u67E5\u4FEE\u7406\u7BB1Pro"
@@ -925,7 +925,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1555761193}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: UICloseGetItem
+        m_MethodName: Call_Co_UICloseGetItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6651,12 +6651,14 @@ MonoBehaviour:
   panel_PartLog: {fileID: 912172530}
   text_PartLog: {fileID: 1125650249}
   paenl_GetItem: {fileID: 157469747}
-  content: {fileID: 640374297}
+  itemContent: {fileID: 640374297}
+  button_CloseItem: {fileID: 157469751}
   itemImage: {fileID: 1614500868}
   itemGotNum: {fileID: 558873749}
   itemStockNum: {fileID: 1419105826}
   itemDesc: {fileID: 1012031550}
-  itemInTime: 1
+  itemOpenTime: 1
+  itemCloseTime: 0.5
   uiInteracts: []
   content_UIInteract: {fileID: 1283858969}
   prefab_UIInteract: {fileID: 1749418090}
