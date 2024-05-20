@@ -3,15 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class LogContent
+{
+    public string content;
+    public AudioClip audioClip;
+}
+
 public class SimpleResultUILog : SimpleResult
 {
     [HelpBox("UILog", HelpBoxType.Info)]
     [SerializeField]
     Fadable tarUILog;
     [SerializeField]
-    string[] content;
+    List<LogContent> logs;
     [SerializeField]
     Color tarColor;
+    
+
     protected override void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
         if (!satisfied)
@@ -24,7 +33,7 @@ public class SimpleResultUILog : SimpleResult
         delegate ()
         {
             tarUILog.GetComponentInChildren<TypeWriter>().SetColor(tarColor);
-            tarUILog.GetComponentInChildren<TypeWriter>().StartType(content, endCall);
+            tarUILog.GetComponentInChildren<TypeWriter>().StartType(logs, endCall);
         }
         );
     }

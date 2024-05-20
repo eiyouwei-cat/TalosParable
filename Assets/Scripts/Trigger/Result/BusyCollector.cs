@@ -18,12 +18,4 @@ public class BusyCollector : Singleton<BusyCollector>
         else
             PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.NULL);
     }
-
-    IEnumerator DelaySetBusyState()
-    {
-        //yield return new WaitForSeconds(0.1f);
-        yield return 0;
-        if (busyMoves.Count > 0)
-            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.forceDelay);
-    }
 }

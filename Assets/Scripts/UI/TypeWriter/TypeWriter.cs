@@ -9,13 +9,13 @@ public class TypeWriter : Singleton<TypeWriter>
     [SerializeField]
     float typeCD = 0.03f;
     string mShownText;
-    string[] targetStrings;
     int curLine;
-    void Start()
-    {
-        
-    }
+
     Action m_callback_added;
+    [SerializeField]
+    List<LogContent> m_logs;
+    [SerializeField]
+    AudioClip curAudioClip;
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -26,20 +26,20 @@ public class TypeWriter : Singleton<TypeWriter>
             });
         }
     }
-    public void StartType(string[] fTargetStrings, Action added_callback = null)
+    public void StartType(List<LogContent> f_logs, Action added_callback = null)
     {
+        m_logs = f_logs;
         m_callback_added = added_callback;
-        targetStrings = fTargetStrings;
         curLine = 0;
-        if (targetStrings != null && targetStrings.Length != 0)
-            StartCoroutine(TypeLine(targetStrings[curLine]));
+        if (m_logs.Count >= 0)
+            StartCoroutine(TypeLine());
     }
     public void TrySkipType(Action callback = null)
     {
         StopAllCoroutines();
-        if (targetStrings[curLine].Length != mShownText.Length)
+        if (m_logs[curLine].content.Length != mShownText.Length)
         {
-            GetComponent<Text>().text = mShownText = targetStrings[curLine];
+            GetComponent<Text>().text = mShownText = m_logs[curLine].content;
         }
         else
         {
@@ -49,25 +49,31 @@ public class TypeWriter : Singleton<TypeWriter>
     void TypeNextLine(Action callback = null)
     {
         curLine++;
-        if(curLine == targetStrings.Length)
+        if(curLine == m_logs.Count)
         {
             callback?.Invoke();
             return;
         }
-        StartCoroutine(TypeLine(targetStrings[curLine]));
-    }
-    public IEnumerator TypeLine(string fTargetString)
-    {
+        StartCoroutine(TypeLine());
         
+    }
+    public IEnumerator TypeLine()
+    {
+        AudioManager.Instance.Stop(curAudioClip);
+        curAudioClip = m_logs[curLine].audioClip;
+        AudioManager.Instance.PlayOneShot(curAudioClip);
+
+        string targetString = m_logs[curLine].content;
+
         mShownText = "";
         
         int mCurPos = 0;
         while (true)
         {
-            if (fTargetString.Length == mCurPos)
+            if (targetString.Length == mCurPos)
                 yield break;
-            mShownText += fTargetString.Substring(mCurPos, 1);
-            GetComponent<Text>().text = mShownText + "<color=#13171800>" + fTargetString.Substring(mCurPos + 1) + "</color>";
+            mShownText += targetString.Substring(mCurPos, 1);
+            GetComponent<Text>().text = mShownText + "<color=#13171800>" + targetString.Substring(mCurPos + 1) + "</color>";
             mCurPos++;
             yield return new WaitForSeconds(typeCD);
         }   

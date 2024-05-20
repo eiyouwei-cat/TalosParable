@@ -474,9 +474,7 @@ MonoBehaviour:
   delayResult: {fileID: 1348291327}
   forceChangeToBusyState: 0
   tarUILog: {fileID: 0}
-  content:
-  - A very old-fashioned strongbox...
-  - consisting of 3 circle-layers (listening carefully to the plate does help)
+  logs: []
   tarColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2181902528831188886
 GameObject:
