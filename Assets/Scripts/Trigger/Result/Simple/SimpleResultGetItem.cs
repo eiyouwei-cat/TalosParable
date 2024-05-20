@@ -12,9 +12,16 @@ public class SimpleResultGetItem : SimpleResult
     {
         if (!satisfied)
             return;
-        UIManager.Instance.UIOpenGetItem(rewardItem);
-        BusyCollector.Instance.RefreshList(added: true, this);
-        //PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.checkItem);
-        UIManager.Instance.closeItemCallback = endCall;
+        if(!rewardItem.isTrigger)
+        {
+            UIManager.Instance.UIOpenGetItem(rewardItem);
+            BusyCollector.Instance.RefreshList(added: true, this);
+            UIManager.Instance.closeItemCallback = endCall;
+        }
+        else
+        {
+            ItemManager.Instance.AddItem(rewardItem);
+            endCall?.Invoke();
+        }
     }
 }

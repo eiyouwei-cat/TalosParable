@@ -7,6 +7,6 @@ public class UIPuzzleExample : UIPuzzle
     public override void CheckPuzzle()
     {
         int r = Random.Range(1, 101);
-        puzzleSolved = (r >= 50);
+        puzzleSolved = (r >= 2);
     }
 }

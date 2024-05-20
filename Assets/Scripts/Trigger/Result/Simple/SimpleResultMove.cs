@@ -71,7 +71,8 @@ public class SimpleResultMove : SimpleResult
             if (Near(tryMove, stations[tarId]))
             {
                 tarId++;
-                TryCalculateSpeed();
+                if (!TryCalculateSpeed())
+                    yield break;
             }
             yield return 0;
         }
@@ -85,7 +86,7 @@ public class SimpleResultMove : SimpleResult
     }
     bool Near(Transform a,Transform b)
     {
-        if ((a.position - b.position).magnitude <= 0.2f)
+        if ((a.position - b.position).magnitude <= 0.1115f)
             return true;
         return false;
     }

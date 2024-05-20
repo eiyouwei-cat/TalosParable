@@ -16,6 +16,10 @@ public class UIPuzzle : MonoBehaviour
     }
     public void CallReward()
     {
+        if(puzzleReward == null)
+        {
+            Debug.LogError(name + " 's reward is NULL!");
+        }
         puzzleReward.result.Invoke(puzzleSolved);
     }
 
