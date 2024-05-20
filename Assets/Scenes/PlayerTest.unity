@@ -368,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181902528280935604, guid: 7ab69ea57b0a6494cbb3de2face6d0c3, type: 3}
       propertyPath: dic.list.Array.data[1].Value.info
-      value: lab bench
+      value: Lab Bench
       objectReference: {fileID: 0}
     - target: {fileID: 2181902528280935604, guid: 7ab69ea57b0a6494cbb3de2face6d0c3, type: 3}
       propertyPath: dic.list.Array.data[1].Key.priority
@@ -2211,9 +2211,9 @@ MonoBehaviour:
   logs:
   - content: These are identifed as some instruments in the Chemistry laboratory...
     audioClip: {fileID: 0}
-  - content: three-necked flask , test tube , certain chemicals ...
+  - content: a three-necked flask , test tubes , certain chemicals ...
     audioClip: {fileID: 0}
-  - content: All of these have become more familiar than before
+  - content: All of these have become more familiar than before ...
     audioClip: {fileID: 0}
   tarColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!64 &666687446
@@ -3916,7 +3916,7 @@ MonoBehaviour:
   forceChangeToBusyState: 0
   tarUILog: {fileID: 912172530}
   logs:
-  - content: The diary of a someone on this tiny spaceship...
+  - content: The diary of someone on this tiny spaceship...
     audioClip: {fileID: 0}
   - content: which writes...... ......
     audioClip: {fileID: 0}
@@ -7459,7 +7459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Door Opened !
-  Description: See what going on outside in the corrider ...
+  Description: See what going on outside in the corridor ...
   Count: 1
   sprite: {fileID: 1032355983}
   isTrigger: 0
