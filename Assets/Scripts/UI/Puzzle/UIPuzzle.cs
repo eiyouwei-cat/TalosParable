@@ -8,11 +8,15 @@ public class UIPuzzle : MonoBehaviour
     [SerializeField]
     SimpleResult puzzleReward;
     [SerializeField]
-    bool puzzleSolved = false;
+    protected bool puzzleSolved = false;
     
-    public bool CheckPuzzle()
+    public virtual void CheckPuzzle()
+    {
+        puzzleSolved = false;
+    }
+    public void CallReward()
     {
         puzzleReward.result.Invoke(puzzleSolved);
-        return puzzleSolved;
     }
+
 }

@@ -7,6 +7,7 @@ public class LevelManager : Singleton<LevelManager>
     List<Level> levels = new List<Level>();
     [SerializeField]
     ObservableValue<Level> curLevel;
+    
 
     public void Initialize()
     {

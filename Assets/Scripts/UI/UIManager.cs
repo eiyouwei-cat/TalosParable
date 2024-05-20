@@ -64,8 +64,9 @@ public class UIManager : Singleton<UIManager>
     {
         itemContent.transform.DOScale(0f, itemCloseTime).SetEase(Ease.InBounce);
         yield return new WaitForSeconds(itemCloseTime+0.2f);
-        paenl_GetItem.SetActive(false);
         closeItemCallback?.Invoke();
+        paenl_GetItem.SetActive(false);
+        
         yield break;
     }
     #endregion
@@ -83,13 +84,15 @@ public class UIManager : Singleton<UIManager>
     public void UICheckPuzzle()
     {
         curPuzzle.CheckPuzzle();
+        curPuzzle.CallReward();
         UIClosePuzzle(curPuzzle.gameObject);
     }
     public void UIClosePuzzle(GameObject tarPuzzle)
     {
+        //TODO puzzle should have endCallback?
+        puzzleCallback?.Invoke();
         //TODO ClosePuzzle
         tarPuzzle.SetActive(false);
-        puzzleCallback?.Invoke();
     }
     
     #endregion

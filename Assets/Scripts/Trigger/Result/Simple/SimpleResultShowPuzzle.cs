@@ -7,8 +7,6 @@ public class SimpleResultShowPuzzle : SimpleResult
 {
     [HelpBox("ShowPuzzle", HelpBoxType.Info)]
     [SerializeField]
-    GameObject tarPuzzle;
-    [SerializeField]
     UIPuzzle puzzle;
     protected override void FuncSimpleResult(bool satisfied = false, Action endCall = null)
     {
@@ -18,6 +16,6 @@ public class SimpleResultShowPuzzle : SimpleResult
         BusyCollector.Instance.RefreshList(added: true, this);
         UIManager.Instance.puzzleCallback = endCall;
         UIManager.Instance.curPuzzle = puzzle;
-        UIManager.Instance.UIShowPuzzle(tarPuzzle);
+        UIManager.Instance.UIShowPuzzle(puzzle.gameObject);
     }
 }

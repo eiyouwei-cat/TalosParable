@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1348291326
 Transform:
   m_ObjectHideFlags: 0
@@ -46,7 +46,6 @@ MonoBehaviour:
   delayTime: 0
   delayResult: {fileID: 0}
   forceChangeToBusyState: 0
-  tarPuzzle: {fileID: 0}
   puzzle: {fileID: 0}
 --- !u!1 &2181902528257960129
 GameObject:
@@ -248,9 +247,9 @@ MonoBehaviour:
           list: []
         priority: 0
       Value:
-        availableKeyCode: 283
-        info: Strongbox
-        simpleResult: {fileID: 2181902528651249790}
+        availableKeyCode: 102
+        info: 
+        simpleResult: {fileID: 2181902528937364102}
 --- !u!114 &7848638754114338698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2181902528651249776
 Transform:
   m_ObjectHideFlags: 0
@@ -471,10 +470,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 0
-  delayResult: {fileID: 1348291327}
+  delayResult: {fileID: 0}
   forceChangeToBusyState: 0
   tarUILog: {fileID: 0}
-  logs: []
+  logs:
+  - content: some kits of thingy that I've never ever seen ...
+    audioClip: {fileID: 0}
   tarColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2181902528831188886
 GameObject:
@@ -587,7 +588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2181902528937364121
 Transform:
   m_ObjectHideFlags: 0

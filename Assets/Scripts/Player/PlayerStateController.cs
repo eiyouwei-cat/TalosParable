@@ -57,7 +57,7 @@ public class PlayerStateController : Singleton<PlayerStateController>
     }
     public void TrySetState(STATE newState)
     {
-        Debug.Log("Try set :" + newState.ToString());
+        //Debug.Log("Try set :" + newState.ToString());
         //if (BusyCollector.Instance.isBusy)
         //    return;
 

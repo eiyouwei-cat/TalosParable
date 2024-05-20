@@ -20,7 +20,7 @@ public class UIInteractItem : MonoBehaviour
                 curCondition = it;
             }
         }
-        return (curCondition == null) ? null : dic[curCondition];
+        return (curCondition == null) ? null : dic[curCondition].availableKeyCode == KeyCode.None ? null : dic[curCondition];
     }
 }
 

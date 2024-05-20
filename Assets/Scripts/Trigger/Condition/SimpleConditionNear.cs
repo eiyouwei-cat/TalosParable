@@ -7,7 +7,7 @@ public class SimpleConditionNear : SimpleCondition
 {
     [HelpBox("Near", HelpBoxType.Info)]
 
-    //TODO visible
+    //TODO ALL visible
     [SerializeField]
     bool visible = false;
     [SerializeField]
