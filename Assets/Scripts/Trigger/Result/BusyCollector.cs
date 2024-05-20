@@ -13,10 +13,17 @@ public class BusyCollector : Singleton<BusyCollector>
         else
             busyMoves.Remove(srm);
         if (busyMoves.Count > 0)
-        {
+            //StartCoroutine(nameof(DelaySetBusyState));
             PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.forceDelay);
-        }
         else
             PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.NULL);
+    }
+
+    IEnumerator DelaySetBusyState()
+    {
+        //yield return new WaitForSeconds(0.1f);
+        yield return 0;
+        if (busyMoves.Count > 0)
+            PlayerStateController.Instance.TrySetState(PlayerStateController.STATE.forceDelay);
     }
 }

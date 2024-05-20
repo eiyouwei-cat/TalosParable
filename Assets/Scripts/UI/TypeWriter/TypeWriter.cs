@@ -22,7 +22,7 @@ public class TypeWriter : Singleton<TypeWriter>
         {
             TrySkipType(delegate ()
             {
-                transform.parent.GetComponent<Fadable>().StartFade(false, m_callback_added);
+                transform.parent.GetComponent<Fadable>().StartFade(false,null,m_callback_added);
             });
         }
     }

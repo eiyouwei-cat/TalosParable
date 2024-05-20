@@ -14,26 +14,29 @@ public class Fadable : MonoBehaviour
     public float inDuration = 0.3f;
     public float outDuration = 3f;
     bool isFading = false;
-    public void StartFade(bool isIn, Action callback = null)
+    public void StartFade(bool isIn, Action callbackBefore = null, Action callbackAfter = null)
     {
         if (isFading && isIn)
             return;
         StopFade();
-        StartCoroutine(Fade(isIn, callback));
+        StartCoroutine(Fade(isIn, callbackBefore, callbackAfter));
     }
     public void StopFade()
     {
         StopAllCoroutines();
         //StopCoroutine(nameof(Fade));
     }
-    IEnumerator Fade(bool isIn, Action callback = null)
+    IEnumerator Fade(bool isIn, Action callbackBefore = null,Action callbackAfter = null)
     {
         //if(isFading && isIn)
         //    yield break;
         isFading = true;
-        if (!isIn)
-            panelContent.SetActive(false);
         panelBack.gameObject.SetActive(true);
+        if (!isIn)
+        {
+            panelContent.SetActive(false);
+        }
+        callbackBefore?.Invoke();
         float time,timer;
         time = timer = isIn ? inDuration : outDuration;
         while (timer > 0)
@@ -43,10 +46,14 @@ public class Fadable : MonoBehaviour
             yield return null;
         }
         if (!isIn)
+        {
             panelBack.gameObject.SetActive(false);
+        }
         if (isIn)
+        {
             panelContent.SetActive(true);
-        callback?.Invoke();
+        }
+        callbackAfter?.Invoke();
         isFading = false;
         yield break;
     }

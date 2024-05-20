@@ -26,7 +26,8 @@ public class SimpleResult : MonoBehaviour
         if (delayResult == null)
             yield break;
         BusyCollector.Instance.RefreshList(added: forceChangeToBusyState, this);
-        yield return new WaitForSeconds(delayTime);
+        if(delayTime > 0)
+            yield return new WaitForSeconds(delayTime);
         delayResult?.FuncCallResult(true);
         BusyCollector.Instance.RefreshList(added: false, this);
         yield break;

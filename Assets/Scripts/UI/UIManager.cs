@@ -22,12 +22,14 @@ public class UIManager : Singleton<UIManager>
     public TypeWriter text_PartLog;
     #endregion
     #region GetItem
+    [HelpBox("GetItem", HelpBoxType.Info)]
     public GameObject paenl_GetItem;
     public GameObject itemContent;
     public Button button_CloseItem;
     public Image itemImage;
     public Text itemGotNum;
     public Text itemStockNum;
+    public Text itemName;
     public Text itemDesc;
     [SerializeField]
     float itemOpenTime = 1f;
@@ -40,6 +42,7 @@ public class UIManager : Singleton<UIManager>
         itemGotNum.text = item.Count.ToString();
         ItemManager.Instance.AddItem(item);
         itemStockNum.text = ItemManager.Instance.GetCount(item).ToString();
+        itemName.text = item.Name.ToString();
         itemDesc.text = item.Description.ToString();
         paenl_GetItem.SetActive(true);
         itemContent.transform.localScale = Vector3.zero;
@@ -65,6 +68,30 @@ public class UIManager : Singleton<UIManager>
         closeItemCallback?.Invoke();
         yield break;
     }
+    #endregion
+    #region Puzzle
+    [HelpBox("Puzzle", HelpBoxType.Info)]
+    public UIPuzzle curPuzzle;
+    [HideInInspector]
+    public Action puzzleCallback;
+    
+    public void UIShowPuzzle(GameObject tarPuzzle)
+    {
+        //TODO ShowPuzzle
+        tarPuzzle.SetActive(true);
+    }
+    public void UICheckPuzzle()
+    {
+        curPuzzle.CheckPuzzle();
+        UIClosePuzzle(curPuzzle.gameObject);
+    }
+    public void UIClosePuzzle(GameObject tarPuzzle)
+    {
+        //TODO ClosePuzzle
+        tarPuzzle.SetActive(false);
+        puzzleCallback?.Invoke();
+    }
+    
     #endregion
     #region UIInteract
     [HelpBox("UIInteract", HelpBoxType.Info)]
